@@ -29,7 +29,7 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                <label>Provinces, Region</label>
+                <label>Edit State</label>
                 <select class="form-control" name="province_id">
                     <?php
                         foreach ($provinces as $prov) {
@@ -66,23 +66,11 @@
             <div class="form-group">
                 <label>Edit Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="1 - Village Health Post (VHP)" {{ old('facility_level', $hospital->facility_level ?? '') == '1 - Village Health Post (VHP)' ? 'selected' : '' }}>
-                        1 - Village Health Post (VHP)
+                    <option value="Belau National Hospital" {{ old('facility_level', $hospital->facility_level ?? '') == 'Belau National Hospital' ? 'selected' : '' }}>
+                        Belau National Hospital
                     </option>
-                    <option value="2 - Community Health Post (CHP)" {{ old('facility_level', $hospital->facility_level ?? '') == '2 - Community Health Post (CHP)' ? 'selected' : '' }}>
-                        2 - Community Health Post (CHP)
-                    </option>
-                    <option value="3 - Health Center / Urban Clinic (HC-UC)" {{ old('facility_level', $hospital->facility_level ?? '') == '3 - Health Center / Urban Clinic (HC-UC)' ? 'selected' : '' }}>
-                        3 - Health Center / Urban Clinic (HC-UC)
-                    </option>
-                    <option value="4 - District Hospital - Rural Health Services (DH)" {{ old('facility_level', $hospital->facility_level ?? '') == '4 - District Hospital - Rural Health Services (DH)' ? 'selected' : '' }}>
-                        4 - District Hospital - Rural Health Services (DH)
-                    </option>
-                    <option value="5 - Provincial Hospital, Health Services and Public Health Programs (PHA)" {{ old('facility_level', $hospital->facility_level ?? '') == '5 - Provincial Hospital, Health Services and Public Health Programs (PHA)' ? 'selected' : '' }}>
-                        5 - Provincial Hospital, Health Services and Public Health Programs (PHA)
-                    </option>
-                    <option value="6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)" {{ old('facility_level', $hospital->facility_level ?? '') == '6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)' ? 'selected' : '' }}>
-                        6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)
+                    <option value="Community Health Centers" {{ old('facility_level', $hospital->facility_level ?? '') == 'Community Health Centers' ? 'selected' : '' }}>
+                        Community Health Centers
                     </option>
                 </select>
             </div>
@@ -124,12 +112,8 @@
 
                 @php
                     $icons = [
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png', 'label' => 'Level 1'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Level 2'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png', 'label' => 'Level 3'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png', 'label' => 'Level 4'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png', 'label' => 'Level 5'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png', 'label' => 'Level 6'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png', 'label' => 'Belau National Hospital'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Community Health Centers'],
                     ];
                 @endphp
 

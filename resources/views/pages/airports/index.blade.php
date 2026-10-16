@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title', 'Airports')
-@section('page-title', 'Papua New Guinea Airports')
+@section('page-title', 'Palau Airports')
 
 @push('styles')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -1009,7 +1009,7 @@ function addAirportMarkers(data) {
             <strong>Classification:</strong> ${airport.category || 'N/A'}<br>
             <strong>Address:</strong>
                 ${airport.address || 'N/A'}
-                ${airport.province_name ? ', ' + airport.province_name : ''}, Papua New Guinea<br>
+                ${airport.province_name ? ', ' + airport.province_name : ''}, Palau<br>
             <strong>Telephone:</strong> ${airport.telephone || 'N/A'}<br>
             <strong>Website:</strong> ${airport.website || 'N/A'}<br>
         `;

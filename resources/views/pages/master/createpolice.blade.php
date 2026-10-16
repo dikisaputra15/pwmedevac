@@ -21,9 +21,9 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Provinces, Region</label>
+                <label>State</label>
                 <select class="form-control" name="province_id">
-                        <option value="0">-Choosse Provinces Region-</option>
+                        <option value="0">-Choosse State-</option>
                     @foreach($provinces as $prov)
                         <option value="{{$prov->id}}">{{$prov->provinces_region}}</option>
                     @endforeach
@@ -88,24 +88,6 @@
                     <input class="form-check-input category-radio" type="radio" name="category" value="National Police HQ" data-icon="{{ asset('images/Layer1.png') }}">
                     <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
                     <label class="form-check-label">National Police HQ</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="Divisional Command" data-icon="{{ asset('images/Layer2.png') }}">
-                    <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
-                    <label class="form-check-label">Divisional Command</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="Provincial Police Command (PPC)" data-icon="{{ asset('images/Layer3.png') }}">
-                    <img src="{{ asset('images/Layer3.png') }}" style="width:12px; height:12px;">
-                    <label class="form-check-label">Provincial Police Command (PPC)</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="District Police Command / Police Station" data-icon="{{ asset('images/Layer4.png') }}">
-                    <img src="{{ asset('images/Layer4.png') }}" style="width:12px; height:12px;">
-                    <label class="form-check-label">District Police Command / Police Station</label>
                 </div>
             </div>
         </div>

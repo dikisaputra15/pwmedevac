@@ -22,7 +22,7 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Edit Provinces, Region</label>
+                <label>Edit State</label>
                 <select class="form-control" name="province_id">
                     <?php
                         foreach ($provinces as $prov) {
@@ -109,38 +109,6 @@
                     <label>National Police HQ</label>
                 </div>
 
-                <div class="form-check form-check-inline police-option {{ $police->category == 'Divisional Command' ? 'selected' : '' }}">
-                    <input class="form-check-input category-radio"
-                        type="radio"
-                        name="category"
-                        value="Divisional Command"
-                        data-icon="{{ asset('images/Layer2.png') }}"
-                        {{ $police->category == 'Divisional Command' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/Layer2.png') }}" width="16">
-                    <label>Divisional Command</label>
-                </div>
-
-                <div class="form-check form-check-inline police-option {{ $police->category == 'Provincial Police Command (PPC)' ? 'selected' : '' }}">
-                    <input class="form-check-input category-radio"
-                        type="radio"
-                        name="category"
-                        value="Provincial Police Command (PPC)"
-                        data-icon="{{ asset('images/Layer3.png') }}"
-                        {{ $police->category == 'Provincial Police Command (PPC)' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/Layer3.png') }}" width="16">
-                    <label>Provincial Police Command (PPC)</label>
-                </div>
-
-                 <div class="form-check form-check-inline police-option {{ $police->category == 'District Police Command / Police Station' ? 'selected' : '' }}">
-                    <input class="form-check-input category-radio"
-                        type="radio"
-                        name="category"
-                        value="District Police Command / Police Station"
-                        data-icon="{{ asset('images/Layer4.png') }}"
-                        {{ $police->category == 'District Police Command / Police Station' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/Layer4.png') }}" width="16">
-                    <label>District Police Command / Police Station</label>
-                </div>
             </div>
         </div>
 

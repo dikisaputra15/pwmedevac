@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title','Hospitals')
-@section('page-title', 'Papua New Guinea Medical Facility')
+@section('page-title', 'Palau Medical Facility')
 
 @push('styles')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -535,7 +535,7 @@
                 <b>Overview</b>
             </h6>
             <p class="text-justify">
-                Level 1 facility is the most basic healthcare delivery point in Papua New Guinea, typically located in rural or remote communities and staffed by a community health worker or aid post orderly. Aid posts provides essential first-contact care, health education, and basic treatment for common conditions, referring patients to higher-level facilities as needed, and plays a critical role in extending primary healthcare access under Papua New Guinea National Department of Health.
+                Level 1 facility is the most basic healthcare delivery point in Palau, typically located in rural or remote communities and staffed by a community health worker or aid post orderly. Aid posts provides essential first-contact care, health education, and basic treatment for common conditions, referring patients to higher-level facilities as needed, and plays a critical role in extending primary healthcare access under Palau National Department of Health.
             </p>
              <h6 class="fw-bold">
                 <b>Role</b>
@@ -579,10 +579,10 @@
                 </ul>
             </p>
              <h5 class="fw-bold" style="color:#3c8dbc;">
-                Papua New Guinea Government Health System
+                Palau Government Health System
             </h5>
             <p class="text-justify">
-                Papua New Guinea operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Papua New Guinea National Department of Health and delivered through a decentralized network of provincial and district health services.
+                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
             </p>
             <p class="text-justify">
                 Healthcare financing is primarily derived from:
@@ -590,13 +590,13 @@
                     <li>General government taxation</li>
                     <li>Significant external donor support</li>
                 </ul>
-                Papua New Guinea does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
+                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
             </p>
             <h5 class="fw-bold" style="color:#3c8dbc;">
                 Public Health Service Delivery System (Government & Provincial Health Authorities)
             </h5>
             <p class="text-justify">
-                Papua New Guinea’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
+                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
             </p>
             <p class="text-justify">
                 The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
@@ -632,7 +632,7 @@
                 <b>Overview</b>
             </h6>
             <p class="text-justify">
-                Level 2 facility is a small primary care facility in Papua New Guinea providing basic outpatient and preventive services, typically staffed by community health workers or nursing staff. Level 2 facilities are an intermediary between aid posts (Level 1) and health centers (Level 3), managing minor conditions and referring patients requiring higher-level care upward, while supporting local public health outreach under the Papua New Guinea National Department of Health.
+                Level 2 facility is a small primary care facility in Palau providing basic outpatient and preventive services, typically staffed by community health workers or nursing staff. Level 2 facilities are an intermediary between aid posts (Level 1) and health centers (Level 3), managing minor conditions and referring patients requiring higher-level care upward, while supporting local public health outreach under the Palau National Department of Health.
             </p>
              <h6 class="fw-bold">
                 <b>Role</b>
@@ -677,10 +677,10 @@
                 </ul>
             </p>
              <h5 class="fw-bold" style="color:#3c8dbc;">
-                Papua New Guinea Government Health System
+                Palau Government Health System
             </h5>
             <p class="text-justify">
-                Papua New Guinea operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Papua New Guinea National Department of Health and delivered through a decentralized network of provincial and district health services.
+                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
             </p>
             <p class="text-justify">
                 Healthcare financing is primarily derived from:
@@ -688,13 +688,13 @@
                     <li>General government taxation</li>
                     <li>Significant external donor support</li>
                 </ul>
-                Papua New Guinea does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
+                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
             </p>
             <h5 class="fw-bold" style="color:#3c8dbc;">
                 Public Health Service Delivery System (Government & Provincial Health Authorities)
             </h5>
             <p class="text-justify">
-                Papua New Guinea’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
+                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
             </p>
             <p class="text-justify">
                 The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
@@ -730,7 +730,7 @@
                 <b>Overview</b>
             </h6>
             <p class="text-justify">
-                Level 3 facility is a primary healthcare center in Papua New Guinea, providing integrated outpatient and limited inpatient services with nursing officers, community health workers, and in some cases medical officers. Level 3 hospitals are the main service delivery point for preventive, promotive, and basic curative care at the community level, receiving referrals from Level 1–2 facilities and referring more complex cases to Level 4 hospitals, while supporting public health programs under the guidance of the Papua New Guinea National Department of Health.
+                Level 3 facility is a primary healthcare center in Palau, providing integrated outpatient and limited inpatient services with nursing officers, community health workers, and in some cases medical officers. Level 3 hospitals are the main service delivery point for preventive, promotive, and basic curative care at the community level, receiving referrals from Level 1–2 facilities and referring more complex cases to Level 4 hospitals, while supporting public health programs under the guidance of the Palau National Department of Health.
             </p>
              <h6 class="fw-bold">
                 <b>Role</b>
@@ -777,10 +777,10 @@
                 </ul>
             </p>
              <h5 class="fw-bold" style="color:#3c8dbc;">
-                Papua New Guinea Government Health System
+                Palau Government Health System
             </h5>
             <p class="text-justify">
-                Papua New Guinea operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Papua New Guinea National Department of Health and delivered through a decentralized network of provincial and district health services.
+                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
             </p>
             <p class="text-justify">
                 Healthcare financing is primarily derived from:
@@ -788,13 +788,13 @@
                     <li>General government taxation</li>
                     <li>Significant external donor support</li>
                 </ul>
-                Papua New Guinea does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
+                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
             </p>
             <h5 class="fw-bold" style="color:#3c8dbc;">
                 Public Health Service Delivery System (Government & Provincial Health Authorities)
             </h5>
             <p class="text-justify">
-                Papua New Guinea’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
+                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
             </p>
             <p class="text-justify">
                 The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
@@ -830,7 +830,7 @@
                 <b>Overview</b>
             </h6>
             <p class="text-justify">
-                Level 4 facility is a district-level general hospital in Papua New Guinea, operating under District Health Authorities (DHAs) and providing comprehensive primary and intermediate care services including general medicine, basic surgery, obstetrics, pediatrics, emergency care, and essential diagnostic services with medical officer oversight; it serves as the main referral center for Level 1–3 facilities within the district, managing moderate-complexity cases while stabilizing and referring more complex cases to Level 5 or Level 6 hospitals, and functions as a key platform for district-level clinical governance, service coordination, and implementation of national health programs under the guidance of the Papua New Guinea National Department of Health.
+                Level 4 facility is a district-level general hospital in Palau, operating under District Health Authorities (DHAs) and providing comprehensive primary and intermediate care services including general medicine, basic surgery, obstetrics, pediatrics, emergency care, and essential diagnostic services with medical officer oversight; it serves as the main referral center for Level 1–3 facilities within the district, managing moderate-complexity cases while stabilizing and referring more complex cases to Level 5 or Level 6 hospitals, and functions as a key platform for district-level clinical governance, service coordination, and implementation of national health programs under the guidance of the Palau National Department of Health.
             </p>
              <h6 class="fw-bold">
                 <b>Role</b>
@@ -876,10 +876,10 @@
                 </ul>
             </p>
              <h5 class="fw-bold" style="color:#3c8dbc;">
-                Papua New Guinea Government Health System
+                Palau Government Health System
             </h5>
             <p class="text-justify">
-                Papua New Guinea operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Papua New Guinea National Department of Health and delivered through a decentralized network of provincial and district health services.
+                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
             </p>
             <p class="text-justify">
                 Healthcare financing is primarily derived from:
@@ -887,13 +887,13 @@
                     <li>General government taxation</li>
                     <li>Significant external donor support</li>
                 </ul>
-                Papua New Guinea does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
+                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
             </p>
             <h5 class="fw-bold" style="color:#3c8dbc;">
                 Public Health Service Delivery System (Government & Provincial Health Authorities)
             </h5>
             <p class="text-justify">
-                Papua New Guinea’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
+                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
             </p>
             <p class="text-justify">
                 The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
@@ -929,7 +929,7 @@
                 <b>Overview</b>
             </h6>
             <p class="text-justify">
-                Level 5 facility is a provincial-level tertiary hospital in Papua New Guinea, operating under Provincial Health Authorities (PHAs) and provides advanced general and selected specialist medical, surgical, obstetric, pediatric, and diagnostic services with specialist and medical officer support. Level 5 hospitals are the primary referral center for Level 1–4 facilities in the province and surrounding areas, managing complex but not nationally referred cases while stabilizing and transferring highly specialized cases to Level 6, and is a key node for provincial clinical governance, workforce training, and implementation of national health programs and standards under the guidance of the Papua New Guinea National Department of Health.
+                Level 5 facility is a provincial-level tertiary hospital in Palau, operating under Provincial Health Authorities (PHAs) and provides advanced general and selected specialist medical, surgical, obstetric, pediatric, and diagnostic services with specialist and medical officer support. Level 5 hospitals are the primary referral center for Level 1–4 facilities in the province and surrounding areas, managing complex but not nationally referred cases while stabilizing and transferring highly specialized cases to Level 6, and is a key node for provincial clinical governance, workforce training, and implementation of national health programs and standards under the guidance of the Palau National Department of Health.
             </p>
              <h6 class="fw-bold">
                 <b>Role</b>
@@ -985,10 +985,10 @@
                 </ul>
             </p>
              <h5 class="fw-bold" style="color:#3c8dbc;">
-                Papua New Guinea Government Health System
+                Palau Government Health System
             </h5>
             <p class="text-justify">
-                Papua New Guinea operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Papua New Guinea National Department of Health and delivered through a decentralized network of provincial and district health services.
+                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
             </p>
             <p class="text-justify">
                 Healthcare financing is primarily derived from:
@@ -996,13 +996,13 @@
                     <li>General government taxation</li>
                     <li>Significant external donor support</li>
                 </ul>
-                Papua New Guinea does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
+                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
             </p>
             <h5 class="fw-bold" style="color:#3c8dbc;">
                 Public Health Service Delivery System (Government & Provincial Health Authorities)
             </h5>
             <p class="text-justify">
-                Papua New Guinea’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
+                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
             </p>
             <p class="text-justify">
                 The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
@@ -1052,7 +1052,7 @@
                 <b>Overview</b>
             </h6>
             <p class="text-justify">
-               Level 6 facility is the highest tier of healthcare service in Papua New Guinea, and is the national referral tertiary hospital under the Papua New Guinea National Department of Health (MDOH), providing comprehensive advanced medical, surgical, diagnostic, and subspecialty services supported by highly specialized workforce and national-level infrastructure. Level 6 hospitals are the ultimate referral destination for all lower-level facilities (Levels 1–5), managing the most complex cases while functions as the central hub for clinical governance, specialist training and education, research, and implementation of national health policies, as well as playing a leading role in disaster response coordination, public health surveillance, and overall health system development (e.g. Port Moresby General Hospital).
+               Level 6 facility is the highest tier of healthcare service in Palau, and is the national referral tertiary hospital under the Palau National Department of Health (MDOH), providing comprehensive advanced medical, surgical, diagnostic, and subspecialty services supported by highly specialized workforce and national-level infrastructure. Level 6 hospitals are the ultimate referral destination for all lower-level facilities (Levels 1–5), managing the most complex cases while functions as the central hub for clinical governance, specialist training and education, research, and implementation of national health policies, as well as playing a leading role in disaster response coordination, public health surveillance, and overall health system development (e.g. Port Moresby General Hospital).
             </p>
               </div>
 
@@ -1137,10 +1137,10 @@
 
             <div class="level66-additional-info">
             <h5 class="fw-bold" style="color:#3c8dbc;">
-                Papua New Guinea Government Health System
+                Palau Government Health System
             </h5>
             <p class="text-justify">
-                Papua New Guinea operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Papua New Guinea National Department of Health and delivered through a decentralized network of provincial and district health services.
+                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
             </p>
             <p class="text-justify">
                 Healthcare financing is primarily derived from:
@@ -1148,13 +1148,13 @@
                     <li>General government taxation</li>
                     <li>Significant external donor support</li>
                 </ul>
-                Papua New Guinea does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
+                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
             </p>
             <h5 class="fw-bold" style="color:#3c8dbc;">
                 Public Health Service Delivery System (Government & Provincial Health Authorities)
             </h5>
             <p class="text-justify">
-                Papua New Guinea’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
+                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
             </p>
             <p class="text-justify">
                 The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
@@ -1856,7 +1856,7 @@ function addHospitalMarkers(data) {
             <strong>Country Classification:</strong> ${h.facility_level || 'N/A'}<br>
             <strong>Address:</strong>
                 ${h.address || 'N/A'}
-                ${h.provinces_region ? ', ' + h.provinces_region : ''}, Papua New Guinea<br>
+                ${h.provinces_region ? ', ' + h.provinces_region : ''}, Palau<br>
             <strong>Coords:</strong> ${h.latitude}, ${h.longitude}<br>
         `;
 

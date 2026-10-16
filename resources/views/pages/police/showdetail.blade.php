@@ -142,7 +142,7 @@
                     <p>
                         <strong>Address:</strong>
                         {{ $police->location }},
-                        {{ $province->provinces_region }}, Papua New Guinea
+                        {{ $province->provinces_region }}, Palau
                     </p>
                     <p>
                         <strong>Latitude:</strong> {{ $police->latitude }}
