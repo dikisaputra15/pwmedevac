@@ -96,8 +96,7 @@ class MasterhospitalController extends Controller
         $hospital->address = $request->input('address');
         $hospital->facility_level = $request->input('facility_level');
         $hospital->facility_category = $request->input('facility_category');
-        $hospital->status = $request->input('status');
-        $hospital->hrs_of_operation = $request->input('hrs_of_operation');
+         $hospital->hrs_of_operation = $request->input('hrs_of_operation');
         $hospital->number_of_beds = $request->input('number_of_beds');
         $hospital->population_catchment = $request->input('population_catchment');
         $hospital->ownership = $request->input('ownership');
@@ -124,6 +123,7 @@ class MasterhospitalController extends Controller
         $hospital->pharmacy = $request->input('pharmacy');
         $hospital->medical_imaging = $request->input('medical_imaging');
         $hospital->medical_student_training = $request->input('medical_student_training');
+        $hospital->medical_personel_disclaimer = $request->input('medical_personel_disclaimer');
         $hospital->doctors = $request->input('doctors');
         $hospital->nurses = $request->input('nurses');
         $hospital->dental_therapist = $request->input('dental_therapist');
@@ -212,6 +212,7 @@ class MasterhospitalController extends Controller
             'pharmacy' => $request->input('pharmacy'),
             'medical_imaging' => $request->input('medical_imaging'),
             'medical_student_training' => $request->input('medical_student_training'),
+            'medical_personel_disclaimer' => $request->input('medical_personel_disclaimer'),
             'doctors' => $request->input('doctors'),
             'nurses' => $request->input('nurses'),
             'dental_therapist' => $request->input('dental_therapist'),

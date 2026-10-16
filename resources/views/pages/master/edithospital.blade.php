@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <div class="col-md-12">
+         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit status</label>
                 <input type="text" class="form-control" name="status" value="{{ $hospital->status; }}">
@@ -150,8 +150,55 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Edit Ownership</label>
-                <input type="text" class="form-control" name="ownership" value="{{ $hospital->ownership; }}">
+                <label>Edit Ownership</label><br>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Government"
+                        {{ old('Government', $hospital->ownership ?? '') == 'Government' ? 'checked' : '' }}>
+                    <label class="form-check-label">Government</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Private"
+                        {{ old('Private', $hospital->ownership ?? '') == 'Private' ? 'checked' : '' }}>
+                    <label class="form-check-label">Private</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Community"
+                        {{ old('Community', $hospital->ownership ?? '') == 'Community' ? 'checked' : '' }}>
+                    <label class="form-check-label">Community</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Army"
+                        {{ old('Army', $hospital->ownership ?? '') == 'Army' ? 'checked' : '' }}>
+                    <label class="form-check-label">Army</label>
+                </div>
+
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Navy"
+                        {{ old('Navy', $hospital->ownership ?? '') == 'Navy' ? 'checked' : '' }}>
+                    <label class="form-check-label">Navy</label>
+                </div>
+
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Air Force"
+                        {{ old('Air Force', $hospital->ownership ?? '') == 'Air Force' ? 'checked' : '' }}>
+                    <label class="form-check-label">Air Force</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Marine"
+                        {{ old('Marine', $hospital->ownership ?? '') == 'Marine' ? 'checked' : '' }}>
+                    <label class="form-check-label">Marine</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Police"
+                        {{ old('Police', $hospital->ownership ?? '') == 'Police' ? 'checked' : '' }}>
+                    <label class="form-check-label">Police</label>
+                </div>
             </div>
         </div>
 
@@ -174,7 +221,7 @@
           </div>
         </div>
 
-         <div class="col-md-12">
+        <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
@@ -307,7 +354,7 @@
           </div>
         </div>
 
-         <div class="col-md-12">
+        <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Inpatient Services</label><br>
 
@@ -451,7 +498,7 @@
           </div>
         </div>
 
-       <div class="col-md-12">
+          <div class="col-md-12">
             <div class="form-group">
                 <label>Edit ICU</label><br>
 
@@ -727,6 +774,25 @@
         </div>
 
          <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Edit Medical Personel Disclimer
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote14" name="medical_personel_disclaimer">
+                    <?php echo $hospital->medical_personel_disclaimer; ?>
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
+         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Doctors</label>
                 <input type="text" class="form-control" name="doctors" value="{{ $hospital->doctors; }}">
@@ -809,6 +875,25 @@
           </div>
         </div>
 
+         <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Edit Emergency Hotline
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote12" name="travel_agent">
+                    <?php echo $hospital->travel_agent; ?>
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
         <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
@@ -866,25 +951,6 @@
           </div>
         </div>
 
-          <div class="col-md-12">
-          <div class="card card-outline card-info">
-            <div class="card-header">
-              <h3 class="card-title">
-                Edit Emergency Hotline
-              </h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-
-                <textarea id="summernote12" name="travel_agent">
-                    <?php echo $hospital->travel_agent; ?>
-                </textarea>
-
-            </div>
-
-          </div>
-        </div>
-
          <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Image</label>
@@ -915,6 +981,7 @@
     $('#summernote11').summernote()
     $('#summernote12').summernote()
     $('#summernote13').summernote()
+    $('#summernote14').summernote()
     $('#summernote15').summernote()
 
   })

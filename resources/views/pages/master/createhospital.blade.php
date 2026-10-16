@@ -100,7 +100,7 @@
             </div>
         </div>
 
-         <div class="col-md-12">
+        <div class="col-md-12">
             <div class="form-group">
                 <label>status</label>
                 <input type="text" class="form-control" name="status">
@@ -123,8 +123,48 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Ownership</label>
-                <input type="text" class="form-control" name="ownership">
+                <label>Ownership</label><br>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Government">
+                    <label class="form-check-label">Government</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Private">
+                    <label class="form-check-label">Private</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Community">
+                    <label class="form-check-label">Community</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Army">
+                    <label class="form-check-label">Army</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Navy">
+                    <label class="form-check-label">Navy</label>
+                </div>
+
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Air Force">
+                    <label class="form-check-label">Air Force</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Marine">
+                    <label class="form-check-label">Marine</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ownership" value="Police">
+                    <label class="form-check-label">Police</label>
+                </div>
+
             </div>
         </div>
 
@@ -147,7 +187,7 @@
           </div>
         </div>
 
-          <div class="col-md-12">
+         <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
@@ -275,7 +315,7 @@
           </div>
         </div>
 
-         <div class="col-md-12">
+        <div class="col-md-12">
             <div class="form-group">
                 <label>Inpatient Services</label><br>
 
@@ -398,7 +438,7 @@
           </div>
         </div>
 
-         <div class="col-md-12">
+        <div class="col-md-12">
             <div class="form-group">
                 <label>ICU</label><br>
 
@@ -630,6 +670,24 @@
         </div>
 
          <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Medical Personel Disclaimer
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote14" name="medical_personel_disclaimer">
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
+         <div class="col-md-12">
             <div class="form-group">
                 <label>Doctors</label>
                 <input type="text" class="form-control" name="doctors">
@@ -711,6 +769,24 @@
           </div>
         </div>
 
+         <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Emergency Hotline
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote12" name="travel_agent">
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
         <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
@@ -765,24 +841,6 @@
           </div>
         </div>
 
-          <div class="col-md-12">
-          <div class="card card-outline card-info">
-            <div class="card-header">
-              <h3 class="card-title">
-                Emergency Hotline
-              </h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-
-                <textarea id="summernote12" name="travel_agent">
-                </textarea>
-
-            </div>
-
-          </div>
-        </div>
-
          <div class="col-md-12">
             <div class="form-group">
                 <label>Image</label>
@@ -813,6 +871,7 @@
     $('#summernote11').summernote()
     $('#summernote12').summernote()
     $('#summernote13').summernote()
+    $('#summernote14').summernote()
     $('#summernote15').summernote()
 
   })
