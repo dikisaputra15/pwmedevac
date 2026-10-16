@@ -366,21 +366,6 @@
                     <small>National Police HQ</small>
                 </button>
 
-                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police3Modal">
-                    <img src="{{ asset('images/Layer2.png') }}" style="width:15px; height:15px;">
-                    <small>Divisional Command</small>
-                </button>
-
-                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police2Modal">
-                    <img src="{{ asset('images/Layer3.png') }}" style="width:15px; height:15px;">
-                    <small>Provincial Police Command (PPC)</small>
-                </button>
-
-                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police1Modal">
-                    <img src="{{ asset('images/Layer4.png') }}" style="width:15px; height:15px;">
-                    <small>District Police Command / Police Station</small>
-                </button>
-
                 <button type="button" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}"
                     data-bs-toggle="modal" data-bs-target="#policeAreaLayerModal">
                     <img src="{{ asset('images/icon-structure.png') }}" style="width: 20px; height: 20px;">
@@ -1359,9 +1344,6 @@ combinedPanelDiv.innerHTML = `
             <label>Category:</label>
             ${[
                 'National Police HQ',
-                'Divisional Command',
-                'Provincial Police Command (PPC)',
-                'District Police Command / Police Station',
             ].map(c => `
             <label style="display:block;font-size:13px;margin-bottom:5px;">
                 <input type="checkbox" name="policeCategory" value="${c}">

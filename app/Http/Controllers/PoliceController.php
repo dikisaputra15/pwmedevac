@@ -146,9 +146,6 @@ class PoliceController extends Controller
        $polices = $query->get();
         $categoryCounts = [
             'National Police HQ' => 0,
-            'Divisional Command' => 0,
-            'Provincial Police Command (PPC)' => 0,
-            'District Police Command / Police Station' => 0,
         ];
 
        foreach ($polices as $police) {

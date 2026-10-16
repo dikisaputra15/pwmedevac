@@ -441,7 +441,7 @@
                             <div class="hospital-item">
                               <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level66Modal">
                                 <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png" style="width:24px; height:24px;">
-                                <small>Level 6</small>
+                                <small>Belau National Hospital</small>
                               </button>
                             </div>
                           </div>
@@ -449,51 +449,20 @@
 
                         <!-- Intermediate -->
                         <div class="class-column">
-                          <div class="class-header class-intermediate">Intermediate</div>
+                          <div class="class-header class-intermediate">Basic</div>
                           <div class="hospital-list">
                             <div class="hospital-row">
                               <div class="hospital-item">
                                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level55Modal">
                                   <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:24px; height:24px;">
-                                  <small>Level 5</small>
+                                  <small>Community Health Centers</small>
                                 </button>
                               </div>
-                              <div class="hospital-item">
-                                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level44Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24px; height:24px;">
-                                  <small>Level 4</small>
-                                </button>
-                              </div>
+
                             </div>
                           </div>
                         </div>
 
-                        <!-- Basic -->
-                        <div class="class-column">
-                          <div class="class-header class-basic">Basic</div>
-                          <div class="hospital-list">
-                            <div class="hospital-row">
-                              <div class="hospital-item">
-                                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level33Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:24px; height:24px;">
-                                  <small>Level 3</small>
-                                </button>
-                              </div>
-                              <div class="hospital-item">
-                                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level22Modal">
-                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:24px; height:24px;">
-                                    <small>Level 2</small>
-                                </button>
-                              </div>
-                              <div class="hospital-item">
-                                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level11Modal">
-                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24px; height:24px;">
-                                    <small>Level 1</small>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
         </div>
@@ -1819,10 +1788,23 @@ async function fetchHospitalData(filters = {}) {
 
     try {
         const res = await fetch(`/api/hospital?${params.toString()}`);
-        return res.ok ? await res.json() : [];
+        // Keep a stable response shape so a failed/empty request cannot break
+        // the filter pipeline before markers are rendered.
+        if (!res.ok) {
+            console.error(`Error fetching hospital data (HTTP ${res.status})`);
+            return { hospitals: [], levelCounts: {} };
+        }
+
+        const payload = await res.json();
+        return {
+            hospitals: Array.isArray(payload?.hospitals) ? payload.hospitals : [],
+            levelCounts: payload?.levelCounts && typeof payload.levelCounts === 'object'
+                ? payload.levelCounts
+                : {}
+        };
     } catch (e) {
         console.error('Error fetching hospital data:', e);
-        return [];
+        return { hospitals: [], levelCounts: {} };
     }
 }
 
@@ -1942,15 +1924,16 @@ async function applyHospitalFilters() {
 
     const result = await fetchHospitalData(filters);
 
-    const hospitals = result.hospitals;
-    const levelCounts = result.levelCounts;
+    const hospitals = Array.isArray(result?.hospitals) ? result.hospitals : [];
+    const levelCounts = result?.levelCounts && typeof result.levelCounts === 'object'
+        ? result.levelCounts
+        : {};
 
     const filteredHospitals = hospitals.filter(h => {
         if (levels.length === 0) return true;
         if (!h.facility_level) return false;
-        return levels.some(
-            sel => h.facility_level.trim().toLowerCase() === sel.trim().toLowerCase()
-        );
+        const dbLevels = h.facility_level.split(',').map(c => c.trim().toLowerCase());
+        return levels.some(sel => dbLevels.includes(sel.toLowerCase()));
     });
 
     addHospitalMarkers(filteredHospitals);
@@ -2027,17 +2010,10 @@ combinedPanelDiv.innerHTML = `
                 @endforeach
             </select>
             <label>Facility Level:</label>
-            ${[
-                { alias: 'Level 6', value: '6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)' },
-                { alias: 'Level 5', value: '5 - Provincial Hospital, Health Services and Public Health Programs (PHA)' },
-                { alias: 'Level 4', value: '4 - District Hospital - Rural Health Services (DH)' },
-                { alias: 'Level 3', value: '3 - Health Center / Urban Clinic (HC-UC)' },
-                { alias: 'Level 2', value: '2 - Community Health Post (CHP)' },
-                { alias: 'Level 1', value: '1 - Village Health Post (VHP)' }
-            ].map(c => `
+             ${['Belau National Hospital','Community Health Centers'].map(c => `
             <label style="display:block;font-size:13px;margin-bottom:5px;">
-                <input type="checkbox" name="hospitalLevel" value="${c.value}">
-                ${c.alias} (<span id="count-${c.value.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
+                <input type="checkbox" name="hospitalLevel" value="${c}">
+                ${c} (<span id="count-${c.replace(/\s+/g,'-')}">0</span>)
             </label>
             `).join('')}
             <hr>

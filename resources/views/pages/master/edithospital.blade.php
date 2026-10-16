@@ -112,8 +112,8 @@
 
                 @php
                     $icons = [
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png', 'label' => 'Belau National Hospital'],
-                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png', 'label' => 'Community Health Centers'],
+                        ['url' => 'https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital-pin-red.png', 'label' => 'Belau National Hospital'],
+                        ['url' => 'https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital_pin-blue.png', 'label' => 'Community Health Centers'],
                     ];
                 @endphp
 
