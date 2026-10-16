@@ -119,7 +119,7 @@
             </div>
         </div>
 
-        <div class="col-md-12">
+       <div class="col-md-12">
             <div class="form-group">
                 <label>Edit IATA Code</label>
                 <input type="text" class="form-control" name="iata_code" value="{{ $airport->iata_code; }}">
@@ -156,7 +156,7 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                Edit Distance From
+                Edit Distance To
               </h3>
             </div>
             <!-- /.card-header -->
@@ -185,12 +185,12 @@
             </div>
         </div>
 
-        <div class="col-md-12" hidden>
+        <!-- <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Operator</label>
                 <input type="text" class="form-control" name="operator" value="{{ $airport->operator; }}">
             </div>
-        </div>
+        </div> -->
 
          <div class="col-md-12">
             <div class="form-group">
@@ -250,10 +250,74 @@
         </div>
 
         <div class="col-md-12">
+            <div class="form-group">
+                <label>Operator</label><br>
+
+                @php
+                    $selectedOperator = old('operator', $airport->operator ?? '');
+                @endphp
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="State-Owned Enterprise"
+                        {{ $selectedOperator == 'State-Owned Enterprise' ? 'checked' : '' }}>
+                    <label class="form-check-label">State-Owned Enterprise</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Local-Level Government"
+                        {{ $selectedOperator == 'Local-Level Government' ? 'checked' : '' }}>
+                    <label class="form-check-label">Local-Level Government</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Mission / Community / Organization"
+                        {{ $selectedOperator == 'Mission / Community / Organization' ? 'checked' : '' }}>
+                    <label class="form-check-label">Mission / Community / Organization</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Private"
+                        {{ $selectedOperator == 'Private' ? 'checked' : '' }}>
+                    <label class="form-check-label">Private</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Military (Army)"
+                        {{ $selectedOperator == 'Military (Army)' ? 'checked' : '' }}>
+                    <label class="form-check-label">Military (Army)</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Military (Navy)"
+                        {{ $selectedOperator == 'Military (Navy)' ? 'checked' : '' }}>
+                    <label class="form-check-label">Military (Navy)</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Military (Air Force)"
+                        {{ $selectedOperator == 'Military (Air Force)' ? 'checked' : '' }}>
+                    <label class="form-check-label">Military (Air Force)</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Police"
+                        {{ $selectedOperator == 'Police' ? 'checked' : '' }}>
+                    <label class="form-check-label">Police</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="operator" value="Customs"
+                        {{ $selectedOperator == 'Customs' ? 'checked' : '' }}>
+                    <label class="form-check-label">Customs</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                Operator
+                Edit Link
               </h3>
             </div>
             <!-- /.card-header -->
@@ -287,7 +351,7 @@
           </div>
         </div>
 
-         <div class="col-md-12">
+        <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
@@ -516,7 +580,57 @@
           </div>
         </div>
 
-        <div class="col-md-12">
+         <div class="col-md-12">
+            <div class="form-group">
+                <label>Edit Public Facilities</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Terminal building" {{ in_array('Terminal building', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Terminal building</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Check-in counter" {{ in_array('Check-in counter', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Check-in counter</label>
+                </div>
+                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Airport customs/immigration" {{ in_array('Airport customs/immigration', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Airport customs/immigration</label>
+                </div>
+                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Waiting area" {{ in_array('Waiting area', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Waiting area</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="ATM" {{ in_array('ATM', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">ATM</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Money changer" {{ in_array('Money changer', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Money changer</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Retail stores and restaurant" {{ in_array('Retail stores and restaurant', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Retail stores and restaurant</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Prayer room/Mushola" {{ in_array('Prayer room/Mushola', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Prayer room/Mushola</label>
+                </div>
+                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Restrooms" {{ in_array('Restrooms', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Restrooms</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Parking" {{ in_array('Parking', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Parking</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_facilities[]" value="Limited facilities available or no facilities available" {{ in_array('Limited facilities available or no facilities available', $public_facilities) ? 'checked' : '' }}>
+                    <label class="form-check-label">Limited facilities available or no facilities available</label>
+                </div>
+            </div>
+        </div>
+
+         <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
@@ -526,13 +640,56 @@
             <!-- /.card-header -->
             <div class="card-body">
 
-                <textarea id="summernote9" name="public_facilities">
+                <textarea id="summernote9">
                     <?php echo $airport->public_facilities; ?>
                 </textarea>
 
             </div>
 
           </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Edit Public Transportation</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Airport shuttle" {{ in_array('Airport shuttle', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Airport shuttle</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name=public_transportation[]" value="Airport bus" {{ in_array('Airport bus', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Airport bus</label>
+                </div>
+                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Airport train" {{ in_array('Airport train', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Airport train</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Airport Taxi" {{ in_array('Airport Taxi', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Airport Taxi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Car rental" {{ in_array('Car rental', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Car rental</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Travel vehicle" {{ in_array('Travel vehicle', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Travel vehicle</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Online transportation" {{ in_array('Online transportation', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Online transportation</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="Taxi bike" {{ in_array('Taxi bike', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">Taxi bike</label>
+                </div>
+                 <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="public_transportation[]" value="None identified at site" {{ in_array('None identified at site', $public_transportation) ? 'checked' : '' }}>
+                    <label class="form-check-label">None identified at site</label>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-12">
@@ -545,7 +702,7 @@
             <!-- /.card-header -->
             <div class="card-body">
 
-                <textarea id="summernote10" name="public_transportation">
+                <textarea id="summernote10">
                     <?php echo $airport->public_transportation; ?>
                 </textarea>
 
@@ -553,6 +710,7 @@
 
           </div>
         </div>
+
 
          <div class="col-md-12">
           <div class="card card-outline card-info">
@@ -754,24 +912,24 @@
           </div>
         </div>
 
-         <div class="col-md-12">
+         <!-- <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
                 Edit Flight Information
               </h3>
             </div>
-            <!-- /.card-header -->
+
             <div class="card-body">
 
                 <textarea id="summernote15" name="flight_information">
-                    <?php echo $airport->flight_information; ?>
+
                 </textarea>
 
             </div>
 
           </div>
-        </div>
+        </div> -->
 
         <div class="col-md-12">
           <div class="card card-outline card-info">
@@ -796,7 +954,7 @@
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                Edit Nearest Medical Facility
+                Edit Nearest Airfields and Medical Facilities
               </h3>
             </div>
             <!-- /.card-header -->
@@ -893,6 +1051,7 @@
     $('#summernote25').summernote()
     $('#summernote26').summernote()
     $('#summernote27').summernote()
+    $('#summernote28').summernote()
 
   })
 </script>
