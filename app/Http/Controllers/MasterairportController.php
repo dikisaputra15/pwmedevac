@@ -163,10 +163,14 @@ class MasterairportController extends Controller
     {
         $airport = Airport::findOrFail($id);
         $category = !empty($airport->category) ? explode(', ', $airport->category) : [];
+        $public_facilities = !empty($airport->public_facilities) ? explode(', ', $airport->public_facilities) : [];
+        $public_transportation = !empty($airport->public_transportation) ? explode(', ', $airport->public_transportation) : [];
         $provinces = Provincesregion::all();
         return view('pages.master.editairport', [
             'airport' => $airport,
             'category' => $category,
+            'public_facilities' => $public_facilities,
+            'public_transportation' => $public_transportation,
             'provinces' => $provinces
         ]);
     }
