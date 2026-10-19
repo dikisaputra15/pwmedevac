@@ -89,6 +89,12 @@
                     <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
                     <label class="form-check-label">National Police HQ</label>
                 </div>
+
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input category-radio" type="radio" name="category" value="Police Sub-Station" data-icon="{{ asset('images/Layer2.png') }}">
+                    <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
+                    <label class="form-check-label">Police Sub-Station</label>
+                </div>
             </div>
         </div>
 

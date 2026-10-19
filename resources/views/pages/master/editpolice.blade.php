@@ -109,6 +109,17 @@
                     <label>National Police HQ</label>
                 </div>
 
+                 <div class="form-check form-check-inline police-option {{ $police->category == 'Police Sub-Station' ? 'selected' : '' }}">
+                    <input class="form-check-input category-radio"
+                        type="radio"
+                        name="category"
+                        value="Police Sub-Station"
+                        data-icon="{{ asset('images/Layer2.png') }}"
+                        {{ $police->category == 'Police Sub-Station' ? 'checked' : '' }}>
+                    <img src="{{ asset('images/Layer2.png') }}" width="16">
+                    <label>Police Sub-Station</label>
+                </div>
+
             </div>
         </div>
 
