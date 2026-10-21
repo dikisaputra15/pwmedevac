@@ -310,18 +310,6 @@
             <div class="classification" style="flex-direction: column; width:100%;">
                       <div class="class-header class-medical-classification">Medical Facility Classification</div>
                       <div class="classification">
-                        <!-- Advanced -->
-                        <div class="class-column">
-                          <div class="class-header class-advanced">Advanced</div>
-                          <div class="hospital-list">
-                            <div class="hospital-item">
-                              <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level66Modal">
-                                <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png" style="width:24px; height:24px;">
-                                <small>Level 6</small>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
 
                         <!-- Intermediate -->
                         <div class="class-column">
@@ -331,13 +319,7 @@
                               <div class="hospital-item">
                                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level55Modal">
                                   <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:24px; height:24px;">
-                                  <small>Level 5</small>
-                                </button>
-                              </div>
-                              <div class="hospital-item">
-                                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level44Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24px; height:24px;">
-                                  <small>Level 4</small>
+                                  <small>Hospital</small>
                                 </button>
                               </div>
                             </div>
@@ -351,20 +333,8 @@
                             <div class="hospital-row">
                               <div class="hospital-item">
                                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level33Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:24px; height:24px;">
-                                  <small>Level 3</small>
-                                </button>
-                              </div>
-                              <div class="hospital-item">
-                                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level22Modal">
-                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:24px; height:24px;">
-                                    <small>Level 2</small>
-                                </button>
-                              </div>
-                              <div class="hospital-item">
-                                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level11Modal">
-                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24px; height:24px;">
-                                    <small>Level 1</small>
+                                  <img src="https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital_pin-green.png" style="width:24px; height:24px;">
+                                  <small>Clinic / Health Centre</small>
                                 </button>
                               </div>
                             </div>
@@ -712,105 +682,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="level33Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-         <div class="d-flex align-items-center">
-            <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 3 – Health Centre - Rural / Urban Clinic – Urban Centre (HC-UC)</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <h6 class="fw-bold">
-                <b>Overview</b>
-            </h6>
-            <p class="text-justify">
-                Level 3 facility is a primary healthcare center in Palau, providing integrated outpatient and limited inpatient services with nursing officers, community health workers, and in some cases medical officers. Level 3 hospitals are the main service delivery point for preventive, promotive, and basic curative care at the community level, receiving referrals from Level 1–2 facilities and referring more complex cases to Level 4 hospitals, while supporting public health programs under the guidance of the Palau National Department of Health.
-            </p>
-             <h6 class="fw-bold">
-                <b>Role</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Primary care hub for defined catchment population</li>
-                    <li>Receives referrals from Level 1–2 facilities (aid posts)</li>
-                    <li>Refers moderate and complex cases to Level 4 hospitals</li>
-                    <li>Implements national public health and outreach programs</li>
-                </ul>
-            </p>
-            <h6 class="fw-bold">
-                <b>Clinical Services</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Bed Capacity: Typically 10–40 beds (limited inpatient capability)</li>
-                    <li>
-                        <strong>Core Services</strong>
-                        <ul>
-                            <li>General outpatient care</li>
-                            <li>Maternal and child health (antenatal, delivery, postnatal)</li>
-                            <li>Basic inpatient care</li>
-                            <li>Management of common diseases</li>
-                            <li>Immunization and public health programs</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Emergency Services</strong>
-                        <ul>
-                            <li>Basic emergency care</li>
-                            <li>Stabilization prior to referral</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Diagnostic</strong>
-                        <ul>
-                            <li>Basic laboratory (e.g. malaria, hemoglobin)</li>
-                            <li>Rapid diagnostic tests</li>
-                            <li>No advanced imaging</li>
-                        </ul>
-                    </li>
-                </ul>
-            </p>
-             <h5 class="fw-bold" style="color:#3c8dbc;">
-                Palau Government Health System
-            </h5>
-            <p class="text-justify">
-                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
-            </p>
-            <p class="text-justify">
-                Healthcare financing is primarily derived from:
-                <ul>
-                    <li>General government taxation</li>
-                    <li>Significant external donor support</li>
-                </ul>
-                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
-            </p>
-            <h5 class="fw-bold" style="color:#3c8dbc;">
-                Public Health Service Delivery System (Government & Provincial Health Authorities)
-            </h5>
-            <p class="text-justify">
-                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
-            </p>
-            <p class="text-justify">
-                The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
-            </p>
-            <p class="text-justify">
-                Care is delivered through a tiered referral system (Level 1–6), with patients typically accessing care through primary-level facilities before being referred to higher-level hospitals.
-            </p>
-            <p class="text-justify">
-                Public providers include:
-                <ul>
-                    <li>Aid Posts, Health Sub-centers, and Health Centers (primary care)</li>
-                    <li>District, Provincial, and Regional / National Hospitals (secondary and tertiary care)</li>
-                </ul>
-                This structure emphasizes primary healthcare, disease prevention, and maternal-child health services, but patient choice of provider is limited, particularly in rural areas.
-            </p>
-      </div>
-    </div>
-  </div>
-</div>
+@include('partials.classification.level33Modal')
 
 <div class="modal fade" id="level44Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
@@ -911,114 +783,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="level55Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex align-items-center">
-            <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 5 – Provincial Hospital, Health Services and Public Health Programs (PHA)</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <h6 class="fw-bold">
-                <b>Overview</b>
-            </h6>
-            <p class="text-justify">
-                Level 5 facility is a provincial-level tertiary hospital in Palau, operating under Provincial Health Authorities (PHAs) and provides advanced general and selected specialist medical, surgical, obstetric, pediatric, and diagnostic services with specialist and medical officer support. Level 5 hospitals are the primary referral center for Level 1–4 facilities in the province and surrounding areas, managing complex but not nationally referred cases while stabilizing and transferring highly specialized cases to Level 6, and is a key node for provincial clinical governance, workforce training, and implementation of national health programs and standards under the guidance of the Palau National Department of Health.
-            </p>
-             <h6 class="fw-bold">
-                <b>Role</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Main referral hospital at provincial level</li>
-                    <li>Provides specialist services for the province</li>
-                    <li>Supervises district and rural health facilities</li>
-                    <li>Supports public health programs and disease surveillance</li>
-                </ul>
-            </p>
-            <h6 class="fw-bold">
-                <b>Clinical Services</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Bed Capacity: Typically 100–500 beds</li>
-                    <li>
-                        <strong>Clinical Services</strong>
-                        <ul>
-                            <li>Internal Medicine</li>
-                            <li>General Surgery</li>
-                            <li>Obstetrics & Gynecology</li>
-                            <li>Pediatrics</li>
-                            <li>Emergency services</li>
-                            <li>Basic anesthesia and operative care</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Emergency & Critical Care</strong>
-                        <ul>
-                            <li>24-hour emergency services</li>
-                            <li>Basic ICU or high-dependency care</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Surgical Capacity</strong>
-                        <ul>
-                            <li>General surgery</li>
-                            <li>Cesarean section</li>
-                            <li>Basic orthopedic procedures</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Diagnostics</strong>
-                        <ul>
-                            <li>X-ray and ultrasound</li>
-                            <li>Laboratory services (hematology, chemistry, microbiology)</li>
-                            <li>Blood transfusion services</li>
-                        </ul>
-                    </li>
-                </ul>
-            </p>
-             <h5 class="fw-bold" style="color:#3c8dbc;">
-                Palau Government Health System
-            </h5>
-            <p class="text-justify">
-                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
-            </p>
-            <p class="text-justify">
-                Healthcare financing is primarily derived from:
-                <ul>
-                    <li>General government taxation</li>
-                    <li>Significant external donor support</li>
-                </ul>
-                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
-            </p>
-            <h5 class="fw-bold" style="color:#3c8dbc;">
-                Public Health Service Delivery System (Government & Provincial Health Authorities)
-            </h5>
-            <p class="text-justify">
-                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
-            </p>
-            <p class="text-justify">
-                The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
-            </p>
-            <p class="text-justify">
-                Care is delivered through a tiered referral system (Level 1–6), with patients typically accessing care through primary-level facilities before being referred to higher-level hospitals.
-            </p>
-            <p class="text-justify">
-                Public providers include:
-                <ul>
-                    <li>Aid Posts, Health Sub-centers, and Health Centers (primary care)</li>
-                    <li>District, Provincial, and Regional / National Hospitals (secondary and tertiary care)</li>
-                </ul>
-                This structure emphasizes primary healthcare, disease prevention, and maternal-child health services, but patient choice of provider is limited, particularly in rural areas.
-            </p>
-      </div>
-    </div>
-  </div>
-</div>
+@include('partials.classification.level55Modal')
 
 <div class="modal fade" id="level66Modal" tabindex="-1" aria-labelledby="level66ModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable level66-modal-dialog">

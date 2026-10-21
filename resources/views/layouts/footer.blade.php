@@ -1,7 +1,7 @@
 <footer class="main-footer" style="margin-left:0;">
     <strong>
         Copyright &copy; {{ date('Y') }}
-        <a href="https://www.concord-consulting.com/" target="__blank">Concord Consulting</a>.
+        <a href="https://www.concord-consulting.com/" target="__blank">Concord Consulting Indonesia</a>.
     </strong>
 </footer>
 

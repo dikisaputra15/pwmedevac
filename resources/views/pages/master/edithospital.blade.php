@@ -66,11 +66,11 @@
             <div class="form-group">
                 <label>Edit Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="Belau National Hospital" {{ old('facility_level', $hospital->facility_level ?? '') == 'Belau National Hospital' ? 'selected' : '' }}>
-                        Belau National Hospital
+                    <option value="Hospital" {{ old('facility_level', $hospital->facility_level ?? '') == 'Hospital' ? 'selected' : '' }}>
+                        Hospital
                     </option>
-                    <option value="Community Health Centers" {{ old('facility_level', $hospital->facility_level ?? '') == 'Community Health Centers' ? 'selected' : '' }}>
-                        Community Health Centers
+                    <option value="Clinic / Health Centre" {{ old('facility_level', $hospital->facility_level ?? '') == 'Clinic / Health Centre' ? 'selected' : '' }}>
+                        Clinic / Health Centre
                     </option>
                 </select>
             </div>
@@ -112,8 +112,8 @@
 
                 @php
                     $icons = [
-                        ['url' => 'https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital-pin-red.png', 'label' => 'Belau National Hospital'],
-                        ['url' => 'https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital_pin-blue.png', 'label' => 'Community Health Centers'],
+                        ['url' => 'https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png', 'label' => 'Hospital'],
+                        ['url' => 'https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital_pin-green.png', 'label' => 'Clinic / Health Centre'],
                     ];
                 @endphp
 

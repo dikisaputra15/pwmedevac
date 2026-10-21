@@ -309,6 +309,44 @@
                 max-height: calc(100vh - 90px);
             }
         }
+
+        :is(#cmdFlowModal, #policeAreaLayerModal) .modal-dialog { max-width: 880px; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) .modal-content { border: 0; border-radius: 12px; overflow: hidden; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) .modal-header {
+            flex: 0 0 auto;
+            padding: 16px 22px !important;
+            background: #f4f7fb;
+            border-bottom: 1px solid #dfe6ef;
+        }
+        :is(#cmdFlowModal, #policeAreaLayerModal) .modal-header img {
+            width: 22px;
+            height: 22px;
+            flex: 0 0 22px;
+            object-fit: contain;
+            padding: 3px;
+            box-sizing: content-box;
+            border-radius: 6px;
+            background: #395272;
+        }
+        :is(#cmdFlowModal, #policeAreaLayerModal) .modal-title { font-size: 18px; font-weight: 600; color: #19334e; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) .modal-body { padding: 22px; font-size: 14px; line-height: 1.7; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) .command-flow-chain {
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border: 1px solid #dfe6ef;
+            border-radius: 8px;
+            background: #f4f7fb;
+            color: #19334e;
+            font-weight: 600;
+        }
+        :is(#cmdFlowModal, #policeAreaLayerModal) h6 { margin: 24px 0 14px; font-size: 16px; color: #19334e; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) ol { padding-left: 22px; margin-bottom: 0; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) li { padding-left: 6px; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) li::marker { color: #395272; font-weight: 600; }
+        :is(#cmdFlowModal, #policeAreaLayerModal) li strong { display: block; margin-bottom: 4px; color: #19334e; }
+        @media (max-width: 575.98px) {
+            :is(#cmdFlowModal, #policeAreaLayerModal) .modal-header, :is(#cmdFlowModal, #policeAreaLayerModal) .modal-body { padding: 16px !important; }
+        }
 </style>
 @endpush
 
@@ -361,12 +399,12 @@
             <div class="d-flex align-items-center gap-3">
                 <span class="fw-bold me-2">Map Legend:</span>
 
-                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police4Modal">
+                <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police1Modal">
                     <img src="{{ asset('images/Layer1.png') }}" style="width:15px; height:15px;">
                     <small>National Police HQ</small>
                 </button>
 
-                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police3Modal">
+                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#police2Modal">
                     <img src="{{ asset('images/Layer2.png') }}" style="width:15px; height:15px;">
                     <small>Police Sub-Station</small>
                 </button>
@@ -406,77 +444,9 @@
   </div>
 </div>
 
-<div class="modal fade" id="police1Modal" tabindex="-1" aria-labelledby="police1ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex align-items-center gap-2">
-          <img src="{{ asset('images/Layer4.png') }}" alt="District Police Command" style="width:24px; height:24px; object-fit:contain;">
-          <h5 class="modal-title" id="police1ModalLabel">District Police Command / Police Station</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+@include('partials.classification.police1Modal')
 
-      <div class="modal-body">
-        <p><strong>Command Level:</strong> Third-tier Territorial Police Command</p>
-        <p><strong>Typical Head Rank:</strong> Superintendent of Police (SP) or Inspector of Police (IP)</p>
-        <p><strong>Administrative Equivalent:</strong> District level</p>
-
-        <p>Supervises police operations within a district by directing police stations and subordinate units, coordinating patrol activities, maintaining public order, supporting criminal investigations, and ensuring effective delivery of policing services within their jurisdiction.</p>
-
-        <p class="mb-2"><strong>Responsibilities:</strong></p>
-        <ul>
-          <li>Command district-level police operations.</li>
-          <li>Supervise Police Station Commanders within the district.</li>
-          <li>Coordinate patrol, crime prevention, and law enforcement activities.</li>
-          <li>Direct responses to local emergencies and major incidents.</li>
-          <li>Allocate operational personnel and resources among police stations.</li>
-          <li>Monitor crime trends and operational performance within the district.</li>
-          <li>Coordinate policing with district administrations and community leaders.</li>
-          <li>Ensure implementation of provincial operational directives.</li>
-          <li>Prepare operational reports for the Provincial Police Commander (PPCs).</li>
-          <li>Support community policing and conflict-resolution initiatives.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="police2Modal" tabindex="-1" aria-labelledby="police2ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex align-items-center gap-2">
-          <img src="{{ asset('images/Layer3.png') }}" alt="Provincial Police Command" style="width:24px; height:24px; object-fit:contain;">
-          <h5 class="modal-title" id="police2ModalLabel">Provincial Police Command (PPC)</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div class="modal-body">
-        <p><strong>Command Level:</strong> Second-tier Territorial Police Command</p>
-        <p><strong>Typical Head Rank:</strong> Chief Superintendent of Police (CSP) or Superintendent of Police (SP)</p>
-        <p><strong>Administrative Equivalent:</strong> Provincial (or Metropolitan Command in the National Capital District and Lae) level</p>
-
-        <p>Commands all policing activities within a province or metropolitan area by directing district police commands, managing crime prevention and law enforcement operations, coordinating emergency responses, and implementing national policing policies at the provincial level.</p>
-
-        <p class="mb-2"><strong>Responsibilities:</strong></p>
-        <ul>
-          <li>Command all policing operations within a province.</li>
-          <li>Supervise District Police Commanders and Station Commanders.</li>
-          <li>Coordinate crime prevention, patrol, and public order operations.</li>
-          <li>Direct provincial criminal investigations and emergency responses.</li>
-          <li>Manage police personnel, logistics, and operational resources within the province.</li>
-          <li>Coordinate policing activities with provincial administrations and local authorities.</li>
-          <li>Monitor crime patterns and public safety issues.</li>
-          <li>Ensure compliance with national policing standards and operational procedures.</li>
-          <li>Prepare operational reports for the Divisional Police Commander.</li>
-          <li>Promote community policing and public engagement initiatives.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+@include('partials.classification.police2Modal')
 
 <div class="modal fade" id="police3Modal" tabindex="-1" aria-labelledby="police3ModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
@@ -552,39 +522,46 @@
 </div>
 
 <div class="modal fade" id="policeAreaLayerModal" tabindex="-1" aria-labelledby="policeAreaLayerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered image-modal-dialog">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header py-2">
         <div class="d-flex align-items-center gap-2">
-            <img src="{{ asset('images/icon-structure.png') }}" alt="" aria-hidden="true">
             <h5 class="modal-title mb-0" id="policeAreaLayerLabel">Police Area Layer</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body police-area-layer-body">
-        <iframe
-            class="police-area-layer-frame"
-            src="{{ asset('police-area-layer.html') }}"
-            title="Police Territorial Areas and Administrative Equivalents"
-            loading="lazy"
-        ></iframe>
+      <div class="modal-body">
+        <ol>
+          <li class="mb-3"><strong>Strategic Command:</strong> The Minister of Justice represents the national civilian command authority for justice and public safety. This level establishes ministerial policy, provides political and administrative direction, and coordinates national law-enforcement priorities across the Ministry of Justice.</li>
+          <li class="mb-3"><strong>Headquarters Command:</strong> The Director provides centralized operational command over the BPS. The Director integrates the seven (7) divisions, allocates resources, coordinates major incidents, and ensures national public-safety priorities translate into operational activity.</li>
+          <li class="mb-3"><strong>Functional Command:</strong> The seven (7) BPS divisions provide the principal functional specialization: Patrol for frontline policing; Criminal Investigations for criminal conducts; Transnational Crime for cross-border and organized criminal activity; Juvenile Justice for juvenile-related enforcement and prevention; Fire and Rescue for fire, rescue, and emergency medical services; Corrections for custodial and correctional functions; and Maritime Security and Fish &amp; Wildlife Protection for maritime, fisheries, wildlife, and natural-resource enforcement.</li>
+          <li><strong>Territorial Command:</strong> National BPS divisions and geographically distributed facilities deliver territorial policing, rather than separate state police commands. Patrol personnel provide routine services across the states, while substations such as Melekeok and Ngardmau provide localized operational presence. Specialized divisions can deploy nationally when their expertise is required. This produces a centralized national command with a decentralized operational deployment model suited to Palau?s small population, dispersed islands, and extensive maritime jurisdiction.</li>
+        </ol>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="cmdFlowModal" tabindex="-1" aria-labelledby="cmdFlowLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered image-modal-dialog">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header py-2">
         <div class="d-flex align-items-center gap-2">
-            <img src="{{ asset('images/icon-flow.png') }}" alt="" aria-hidden="true">
             <h5 class="modal-title mb-0" id="cmdFlowLabel">Command Flow</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body image-modal-body">
-            <img src="{{ asset('images/cmd-flow.png') }}" alt="Police Command Flow">
+      <div class="modal-body">
+        <div class="command-flow-chain" aria-label="Principal command flow">Minister of Justice &rarr; BPS Director &rarr; Division Chiefs &rarr; Frontline personnel</div>
+        <p>The principal command flow of the Palau BPS can be represented as Minister of Justice &rarr; BPS Director &rarr; Division Chiefs &rarr; specialized units, operational teams, stations, substations, and frontline personnel. The Minister establishes ministerial policy and exercises civilian administrative authority, while the BPS Director provides national operational coordination. Division Chiefs command their respective functional areas with local facilities, such as Melekeok and Ngardmau substations, functioning as geographically deployed components of the relevant national divisions rather than autonomous territorial commands.</p>
+
+        <h6 class="fw-bold">Reporting Relationships &mdash; Information Flows</h6>
+        <ol>
+          <li class="mb-3"><strong>Territorial/Frontline Reporting:</strong> Police officers, patrol teams, substations, and other frontline personnel report operational incidents and routine activities through their immediate supervisors to the relevant Chief, with DP serving as the principal frontline reporting channel for ordinary policing matters.</li>
+          <li class="mb-3"><strong>Specialized Case Reporting:</strong> CID, Transnational Crime, Juvenile Justice, Maritime Security and Fish &amp; Wildlife Protection, Fire &amp; Rescue, and other specialized divisions report significant investigations and operational cases through their respective Chiefs to the BPS Director. CID also submits completed criminal investigation reports to the Office of the Attorney General for prosecutorial disposition, as provided by the organizational framework.</li>
+          <li class="mb-3"><strong>Inter-Divisional Operational Reporting:</strong> The BPS Director coordinates major incidents requiring multiple capabilities, allowing DP, CID, DFR, DMS, DJJ, DOC, and Transnational Crime personnel to share operational information and coordinate deployments rather than operate as isolated commands.</li>
+          <li><strong>Ministerial/Strategic Reporting:</strong> The BPS Director reports to the Minister of Justice on major operational issues, resource requirements, public-safety conditions, and organizational performance. The Minister then provides policy and administrative direction within the MOJ and coordinates matters requiring higher-level government action.</li>
+        </ol>
       </div>
     </div>
   </div>

@@ -288,119 +288,83 @@
         cursor: pointer;
     }
 
-    .legend-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0;
-        width: 100%;
-        align-items: start;
-    }
-
-    .legend-grid-item {
+    .dashboard-legend-sidebar.dashboard-classifications {
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 6px;
-        width: 100%;
-        min-height: 32px;
-        text-align: left;
-        white-space: nowrap;
+        flex-direction: column;
+        gap: 8px;
+        background: #fff;
     }
-
-    .legend-grid-item img {
-        width: 12px;
-        height: 12px;
-        object-fit: contain;
-        flex-shrink: 0;
+    .dashboard-classification-group {
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
     }
-
-    .legend-grid-item small { text-align: left; }
-
-    .airfield-legend-column {
-        flex: 0 0 auto;
-        margin: 0;
+    .dashboard-classification-group > .class-header,
+    .dashboard-classification-group > div > .class-medical-classification {
+      margin-bottom: 8px;
+      padding: 0;
+      line-height: 20px;
+      text-align: left;
     }
-
-    .airfield-legend-list {
-        min-width: max-content;
-        padding: 0;
+    .dashboard-classifications .airport-list {
+      align-items: flex-start;
+      padding: 0;
     }
-
-    .airfield-legend-list .class-header {
-        white-space: nowrap;
+    .dashboard-classifications .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+      min-height: 30px;
+      padding: 3px 0 !important;
+      white-space: nowrap;
+      text-align: left;
     }
-
-    .airfield-legend-grid {
-        grid-template-columns: repeat(3, max-content);
-        column-gap: 12px;
-        row-gap: 0;
-        width: max-content;
+    .dashboard-classifications .btn small {
+      font-size: 12px;
+      line-height: 18px;
     }
-
-    .airfield-legend-grid .legend-grid-item {
-        width: auto;
+    .dashboard-classifications .btn img {
+      flex-shrink: 0;
+      object-fit: contain;
     }
-
-    .medical-legend-groups {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
+    .dashboard-medical-levels {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      gap: 0;
     }
-
-    .medical-legend-group {
-        flex: 1;
-        align-items: flex-start;
-        text-align: left;
+    .dashboard-medical-levels .class-column:not(:last-child) > div {
+      padding-right: 16px;
     }
-
-    .medical-legend-items {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 10px;
+    .dashboard-medical-levels .class-header {
+      margin-bottom: 4px;
+      padding-top: 0;
+      padding-bottom: 5px;
+      padding-left: 0;
+      line-height: 20px;
     }
-
-    .medical-legend-items .legend-grid-item {
-        width: auto;
-        padding-left: 0 !important;
-    }
-
-    .medical-legend-items .legend-grid-item img {
-        width: 24px;
-        height: 24px;
-    }
-
-    .police-legend-grid {
-        grid-template-columns: repeat(2, max-content);
-        column-gap: 20px;
-        row-gap: 0;
-        width: max-content;
-    }
-
-    .police-legend-grid .legend-grid-item {
-        width: auto;
-        white-space: nowrap;
-        line-height: 1.15;
-    }
-
-    .police-legend-list {
-        padding: 0;
-        min-width: max-content;
-    }
-
-    .classification-toolbar {
-        display: flex;
-        width: 100%;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 24px;
-    }
-
-    .medical-legend-column,
-    .police-legend-column {
-        flex: 0 0 auto;
-        margin: 0 !important;
-    }
+    .dashboard-legend-panel { width: 100%; border: 1px solid #d6dee8; border-radius: 9px; background: #fff; color: #19334e; overflow: hidden; }
+    .dashboard-legend-panel summary,
+    .dashboard-legend-disclaimer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px; font-size: 13px; font-weight: 700; cursor: pointer; list-style: none; }
+    .dashboard-legend-disclaimer { min-height: 50px; text-align: left; font-family: inherit; }
+    .dashboard-legend-panel summary::-webkit-details-marker { display: none; }
+    .dashboard-legend-panel summary:hover,
+    .dashboard-legend-disclaimer:hover { background: #f5f8fb; }
+    .dashboard-legend-panel summary:focus-visible,
+    .dashboard-legend-disclaimer:focus-visible { outline: 2px solid #346abb; outline-offset: -3px; }
+    .legend-toggle { display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid #bbc7d5; border-radius: 50%; flex-shrink: 0; }
+    .legend-toggle::before { content: '+'; font-size: 17px; font-weight: 400; }
+    .dashboard-legend-panel[open] .legend-toggle::before { content: '\00d7'; }
+    .dashboard-legend-panel[open] summary { border-bottom: 1px solid #d6dee8; }
+    .dashboard-legend-panel .dashboard-classification-group { padding: 12px; overflow: visible; }
+    .dashboard-legend-panel .class-header { font-size: 12px; text-align: left; }
+    .dashboard-legend-panel .airport-list > div { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 4px !important; }
+    .dashboard-legend-panel .airport-list > div > div:empty { display: none; }
+    .dashboard-legend-panel .dashboard-medical-levels { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .dashboard-legend-panel .dashboard-medical-levels .class-column > div { padding-right: 0; }
+    .dashboard-legend-panel .dashboard-medical-levels .class-column > div:not(.class-header) { flex-direction: column !important; gap: 4px !important; }
+    .dashboard-legend-panel .btn { white-space: normal; width: 100%; }
+    .dashboard-legend-panel .btn small { text-align: left; }
 
 /* ===== Google Places Autocomplete Fix ===== */
 .pac-container {
@@ -509,6 +473,72 @@
 .medical-info-content ul { padding-left: 20px; margin-bottom: 12px; }
 .medical-info-content li { margin-bottom: 5px; }
 .medical-info-content .level66-additional-info { padding: 8px 0 0; }
+    .dashboard-map-layout {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        align-items: start;
+    }
+    .dashboard-content-column {
+        display: none;
+        background: #fff;
+    }
+    .dashboard-map-layout #map .gm-style-mtc {
+        margin-top: 60px !important;
+    }
+    .dashboard-map-layout.is-content-open {
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: 12px;
+    }
+    .dashboard-map-layout.is-content-open .dashboard-content-column {
+        display: block;
+        width: 240px;
+    }
+    .dashboard-map-stage { position: relative; min-width: 0; }
+    .dashboard-content-toggle {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 115px;
+        min-height: 40px;
+        padding: 9px 12px;
+        border: 1px solid #bbc7d5;
+        border-radius: 7px;
+        background: #fff;
+        color: #19334e;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .dashboard-content-toggle:hover { background: #f5f8fb; }
+    .dashboard-content-toggle[aria-expanded="true"] {
+        width: 30px;
+        min-height: 34px;
+        padding: 6px;
+        justify-content: center;
+        margin-left: auto;
+        font-size: 20px;
+    }
+    .dashboard-content-toggle[aria-expanded="true"] .content-info-label { display: none; }
+    .dashboard-content-toggle:focus-visible { outline: 2px solid #346abb; }
+    .dashboard-map-layout .dashboard-legend-sidebar {
+        width: 100%;
+        margin-top: 0;
+        padding: 0;
+    }
+    .dashboard-map-layout .dashboard-legend-sidebar[hidden] { display: none; }
+    .dashboard-map-layout #routePanel { left: 10px !important; }
+    @media (max-width: 767px) {
+        .dashboard-map-layout,
+        .dashboard-map-layout.is-content-open { grid-template-columns: minmax(0, 1fr); }
+        .dashboard-map-layout.is-content-open .dashboard-content-column { width: 100%; }
+    }
 </style>
 
 @endpush
@@ -517,124 +547,7 @@
 
 <div class="card">
     <div class="row" style="background-color: #dfeaf1;">
-        <div class="col-md-9">
-            <div class="d-flex p-3">
-                <div class="classification-toolbar">
-
-                <!-- Airport -->
-                      <div class="class-column airfield-legend-column">
-                        <div class="airport-list airfield-legend-list">
-                          <div class="class-header class-airport-category">Airfield Classification</div>
-                          <div class="hospital-row legend-grid airfield-legend-grid">
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level6Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/International-Airport.png" style="width:18px; height:18px;">
-                                  <small>International</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level5Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-airport.png" style="width:18px; height:18px;">
-                                  <small>Domestic</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level4Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-domestic-airport.png" style="width:18px; height:18px;">
-                                  <small>Regional</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level2Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/civil-military-airport.png" style="width:18px; height:18px;">
-                                  <small>Civil-Military</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level3Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/military-airport-red.png" style="width:18px; height:18px;">
-                                  <small>Military</small>
-                              </button>
-                              <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level1Modal">
-                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/private-airport.png" style="width:18px; height:18px;">
-                                  <small>Private</small>
-                              </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Medical Facility Legend -->
-                      <div class="medical-legend-column" style="flex-direction: column;">
-                        <!-- Title -->
-                        <div class="class-header class-medical-classification">Medical Facility Classification</div>
-                        <div class="medical-legend-groups">
-                            <!-- Advanced -->
-                            <div class="class-column medical-legend-group">
-                              <div class="class-header class-advanced">Advanced</div>
-                              <div class="medical-legend-items">
-                                  <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level66Modal">
-                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png" style="width:24px; height:24px;">
-                                    <small>Level 6</small>
-                                  </button>
-                              </div>
-                            </div>
-
-                            <!-- Intermediate -->
-                            <div class="class-column medical-legend-group">
-                              <div class="class-header class-intermediate">Intermediate</div>
-                              <div class="medical-legend-items">
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level55Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:24px; height:24px;">
-                                      <small>Level 5</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level44Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24px; height:24px;">
-                                      <small>Level 4</small>
-                                    </button>
-                              </div>
-                            </div>
-
-                            <!-- Basic -->
-                            <div class="class-column medical-legend-group">
-                              <div class="class-header class-basic">Basic</div>
-                              <div class="medical-legend-items">
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level33Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:24px; height:24px;">
-                                      <small>Level 3</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level22Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:24px; height:24px;">
-                                      <small>Level 2</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#level11Modal">
-                                        <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24px; height:24px;">
-                                        <small>Level 1</small>
-                                    </button>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-
-                       <div class="class-column police-legend-column">
-                        <div class="airport-list police-legend-list">
-                            <div class="class-header class-airport-category">Police Classification</div>
-                            <div class="hospital-row legend-grid police-legend-grid">
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police4Modal">
-                                        <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
-                                        <small>National Police HQ</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police3Modal">
-                                        <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
-                                        <small>Divisional Command</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police2Modal">
-                                         <img src="{{ asset('images/Layer3.png') }}" style="width:12px; height:12px;">
-                                        <small>Provincial Police Command (PPC)</small>
-                                    </button>
-                                    <button class="btn p-1 legend-grid-item" data-bs-toggle="modal" data-bs-target="#police1Modal">
-                                        <img src="{{ asset('images/Layer4.png') }}" style="width:12px; height:12px;">
-                                        <small>District Police Command / Police Station</small>
-                                    </button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
+        <div class="col-md-12">
             <div class="d-flex justify-content-end p-3">
                 <div class="d-flex gap-2 mt-2">
 
@@ -667,18 +580,119 @@
         </div>
     </div>
 
-     <div class="col-md-12">
-        <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
-            <i class="bi bi-info-circle text-primary fs-5"></i>
-            <small>Disclaimer</small>
-        </button>
-    </div>
-
 </div>
 
-<div style="position:relative;">
+<div class="dashboard-map-layout">
+    <div class="dashboard-content-column">
+        <aside id="dashboardContentInfo" class="dashboard-legend-sidebar dashboard-classifications" aria-label="Map classifications" hidden>
+<details class="dashboard-legend-panel"><summary>Aviation<span class="legend-toggle" aria-hidden="true"></span></summary><div class="dashboard-classification-group">
+                        <div class="class-header class-airport-category">AIRFIELD CLASSIFICATION</div>
+                        <div class="airport-list">
+                          <div style="display: grid; grid-template-columns: max-content max-content max-content max-content; column-gap: 15px; row-gap: 5px;">
+                            <!-- Airport row 1 -->
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level6Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/International-Airport.png" style="width:18px; height:18px;">
+                                  <small>International</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level5Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-airport.png" style="width:18px; height:18px;">
+                                  <small>Domestic</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level4Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/regional-domestic-airport.png" style="width:18px; height:18px;">
+                                  <small>Regional</small>
+                              </button>
+                            </div>
+                            <div></div> <!-- empty grid item for row 1 -->
 
-<div id="map"></div>
+                            <!-- Airport row 2 -->
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level2Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/civil-military-airport.png" style="width:18px; height:18px;">
+                                  <small>Civil-Military</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level3Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/military-airport-red.png" style="width:18px; height:18px;">
+                                  <small>Military</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#level1Modal">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/private-airport.png" style="width:18px; height:18px;">
+                                  <small>Private</small>
+                              </button>
+                            </div>
+                            <div class="hospital-item">
+                              <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#">
+                                  <img src="https://pg.concordreview.com/wp-content/uploads/2025/11/helipad-removebg.png" style="width:18px; height:18px;">
+                                  <small>Helipad</small>
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div></details><details class="dashboard-legend-panel"><summary>Medical Facilities<span class="legend-toggle" aria-hidden="true"></span></summary><div class="dashboard-classification-group">
+                        <!-- Title -->
+                        <div>
+                            <div class="class-header class-medical-classification" style="text-align:left;">Medical Facility Classification</div>
+                        </div>
+                        <div class="dashboard-medical-levels">
+
+                            <!-- Intermediate -->
+                            <div class="class-column" style="align-items: flex-start; text-align: left;">
+                              <div class="class-header class-intermediate">Intermediate</div>
+                              <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 10px;">
+                                  <button class="btn p-1 legend-grid-item" style="width: auto; padding-left: 0 !important;" data-bs-toggle="modal" data-bs-target="#level55Modal">
+                                    <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:24px; height:24px;">
+                                    <small>Hospital</small>
+                                  </button>
+                              </div>
+                            </div>
+
+                            <!-- Basic -->
+                            <div class="class-column" style="align-items: flex-start; text-align: left;">
+                              <div class="class-header class-basic">Basic</div>
+                              <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 10px;">
+                                  <button class="btn p-1 legend-grid-item" style="width: auto; padding-left: 0 !important;" data-bs-toggle="modal" data-bs-target="#level33Modal">
+                                    <img src="https://id.concordreview.com/wp-content/plugins/w2gm/resources/images/map_icons/icons/_new/hospital_pin-green.png" style="width:24px; height:24px;">
+                                    <small>Clinic / Health Centre</small>
+                                  </button>
+                              </div>
+                            </div>
+                        </div>
+                      </div></details><details class="dashboard-legend-panel"><summary>Police<span class="legend-toggle" aria-hidden="true"></span></summary><div class="dashboard-classification-group">
+                        <div class="class-header class-airport-category">POLICE CLASSIFICATION</div>
+
+                        <div class="airport-list">
+                            <div style="display: grid; grid-template-columns: repeat(3, max-content); column-gap: 15px;">
+                                <div class="hospital-item">
+                                    <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#police1Modal">
+                                        <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
+                                        <small>National Police (HQ)</small>
+                                    </button>
+                                </div>
+                                <div class="hospital-item">
+                                    <button class="btn p-1 text-start w-100" data-bs-toggle="modal" data-bs-target="#police2Modal">
+                                        <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
+                                        <small>Police Sub-Station</small>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div></details>
+        </aside>
+    </div>
+    <div class="dashboard-map-stage">
+        <button type="button" class="dashboard-content-toggle" aria-expanded="false" aria-controls="dashboardContentInfo" aria-label="Open Content Info"><span class="content-info-label">Content Info</span><span aria-hidden="true">&#8250;</span></button>
+        <div id="map"></div>
 
 <!-- Route Detail Panel -->
 <div id="routePanel" style="
@@ -721,20 +735,6 @@
 
 </div>
 
-<div class="modal fade" id="disclaimerModal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="disclaimerLabel">Disclaimer</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-       <p class="p-modal text-justify">Every attempt has been made to ensure the completeness and accuracy of the most updated information and data available. Clients are advised, however, that provided information, and data is subject to change.</p>
-       <h5 class="modal-title" id="disclaimerLabel">Google Maps Link</h5>
-       <p class="p-modal text-justify">Google Maps may automatically display or translate content based on the user’s current region, browser settings, or Google account preferences. This issue may occur when opening google maps link from TCMT platform using Microsoft Edge. For the best experience, we recommend opening the Google Chrome link while logged into your Google account. You can also use your browser’s translation feature to view Google Maps in your preferred language.</p>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="modal fade" id="level1Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
@@ -1036,105 +1036,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="level33Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-         <div class="d-flex align-items-center">
-            <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 3 – Health Centre - Rural / Urban Clinic – Urban Centre (HC-UC)</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <h6 class="fw-bold">
-                <b>Overview</b>
-            </h6>
-            <p class="text-justify">
-                Level 3 facility is a primary healthcare center in Palau, providing integrated outpatient and limited inpatient services with nursing officers, community health workers, and in some cases medical officers. Level 3 hospitals are the main service delivery point for preventive, promotive, and basic curative care at the community level, receiving referrals from Level 1–2 facilities and referring more complex cases to Level 4 hospitals, while supporting public health programs under the guidance of the Palau National Department of Health.
-            </p>
-             <h6 class="fw-bold">
-                <b>Role</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Primary care hub for defined catchment population</li>
-                    <li>Receives referrals from Level 1–2 facilities (aid posts)</li>
-                    <li>Refers moderate and complex cases to Level 4 hospitals</li>
-                    <li>Implements national public health and outreach programs</li>
-                </ul>
-            </p>
-            <h6 class="fw-bold">
-                <b>Clinical Services</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Bed Capacity: Typically 10–40 beds (limited inpatient capability)</li>
-                    <li>
-                        <strong>Core Services</strong>
-                        <ul>
-                            <li>General outpatient care</li>
-                            <li>Maternal and child health (antenatal, delivery, postnatal)</li>
-                            <li>Basic inpatient care</li>
-                            <li>Management of common diseases</li>
-                            <li>Immunization and public health programs</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Emergency Services</strong>
-                        <ul>
-                            <li>Basic emergency care</li>
-                            <li>Stabilization prior to referral</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Diagnostic</strong>
-                        <ul>
-                            <li>Basic laboratory (e.g. malaria, hemoglobin)</li>
-                            <li>Rapid diagnostic tests</li>
-                            <li>No advanced imaging</li>
-                        </ul>
-                    </li>
-                </ul>
-            </p>
-             <h5 class="fw-bold" style="color:#3c8dbc;">
-                Palau Government Health System
-            </h5>
-            <p class="text-justify">
-                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
-            </p>
-            <p class="text-justify">
-                Healthcare financing is primarily derived from:
-                <ul>
-                    <li>General government taxation</li>
-                    <li>Significant external donor support</li>
-                </ul>
-                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
-            </p>
-            <h5 class="fw-bold" style="color:#3c8dbc;">
-                Public Health Service Delivery System (Government & Provincial Health Authorities)
-            </h5>
-            <p class="text-justify">
-                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
-            </p>
-            <p class="text-justify">
-                The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
-            </p>
-            <p class="text-justify">
-                Care is delivered through a tiered referral system (Level 1–6), with patients typically accessing care through primary-level facilities before being referred to higher-level hospitals.
-            </p>
-            <p class="text-justify">
-                Public providers include:
-                <ul>
-                    <li>Aid Posts, Health Sub-centers, and Health Centers (primary care)</li>
-                    <li>District, Provincial, and Regional / National Hospitals (secondary and tertiary care)</li>
-                </ul>
-                This structure emphasizes primary healthcare, disease prevention, and maternal-child health services, but patient choice of provider is limited, particularly in rural areas.
-            </p>
-      </div>
-    </div>
-  </div>
-</div>
+@include('partials.classification.level33Modal')
 
 <div class="modal fade" id="level44Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
@@ -1235,114 +1137,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="level55Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex align-items-center">
-            <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 5 – Provincial Hospital, Health Services and Public Health Programs (PHA)</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-            <h6 class="fw-bold">
-                <b>Overview</b>
-            </h6>
-            <p class="text-justify">
-                Level 5 facility is a provincial-level tertiary hospital in Palau, operating under Provincial Health Authorities (PHAs) and provides advanced general and selected specialist medical, surgical, obstetric, pediatric, and diagnostic services with specialist and medical officer support. Level 5 hospitals are the primary referral center for Level 1–4 facilities in the province and surrounding areas, managing complex but not nationally referred cases while stabilizing and transferring highly specialized cases to Level 6, and is a key node for provincial clinical governance, workforce training, and implementation of national health programs and standards under the guidance of the Palau National Department of Health.
-            </p>
-             <h6 class="fw-bold">
-                <b>Role</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Main referral hospital at provincial level</li>
-                    <li>Provides specialist services for the province</li>
-                    <li>Supervises district and rural health facilities</li>
-                    <li>Supports public health programs and disease surveillance</li>
-                </ul>
-            </p>
-            <h6 class="fw-bold">
-                <b>Clinical Services</b>
-            </h6>
-            <p class="text-justify">
-                <ul>
-                    <li>Bed Capacity: Typically 100–500 beds</li>
-                    <li>
-                        <strong>Clinical Services</strong>
-                        <ul>
-                            <li>Internal Medicine</li>
-                            <li>General Surgery</li>
-                            <li>Obstetrics & Gynecology</li>
-                            <li>Pediatrics</li>
-                            <li>Emergency services</li>
-                            <li>Basic anesthesia and operative care</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Emergency & Critical Care</strong>
-                        <ul>
-                            <li>24-hour emergency services</li>
-                            <li>Basic ICU or high-dependency care</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Surgical Capacity</strong>
-                        <ul>
-                            <li>General surgery</li>
-                            <li>Cesarean section</li>
-                            <li>Basic orthopedic procedures</li>
-                        </ul>
-                    </li>
-                    <li class="mt-2">
-                        <strong>Diagnostics</strong>
-                        <ul>
-                            <li>X-ray and ultrasound</li>
-                            <li>Laboratory services (hematology, chemistry, microbiology)</li>
-                            <li>Blood transfusion services</li>
-                        </ul>
-                    </li>
-                </ul>
-            </p>
-             <h5 class="fw-bold" style="color:#3c8dbc;">
-                Palau Government Health System
-            </h5>
-            <p class="text-justify">
-                Palau operates a state-led, tax-funded public health system without a unified national health insurance scheme. The system is administered by Palau National Department of Health and delivered through a decentralized network of provincial and district health services.
-            </p>
-            <p class="text-justify">
-                Healthcare financing is primarily derived from:
-                <ul>
-                    <li>General government taxation</li>
-                    <li>Significant external donor support</li>
-                </ul>
-                Palau does not operate parallel insurance schemes. Instead, the system is structured around public service provision with limited user fees, supplemented by private out-of-pocket payments and employer-based arrangements.
-            </p>
-            <h5 class="fw-bold" style="color:#3c8dbc;">
-                Public Health Service Delivery System (Government & Provincial Health Authorities)
-            </h5>
-            <p class="text-justify">
-                Palau’s primary healthcare system is delivered through a nationwide network of public facilities managed by Provincial Health Authorities (PHAs) under the policy direction of the National Department of Health. It covers most of the population, particularly in rural and remote areas.
-            </p>
-            <p class="text-justify">
-                The system is largely financed through government budgets, meaning services are free or low-cost at the point of care, especially for essential health services.
-            </p>
-            <p class="text-justify">
-                Care is delivered through a tiered referral system (Level 1–6), with patients typically accessing care through primary-level facilities before being referred to higher-level hospitals.
-            </p>
-            <p class="text-justify">
-                Public providers include:
-                <ul>
-                    <li>Aid Posts, Health Sub-centers, and Health Centers (primary care)</li>
-                    <li>District, Provincial, and Regional / National Hospitals (secondary and tertiary care)</li>
-                </ul>
-                This structure emphasizes primary healthcare, disease prevention, and maternal-child health services, but patient choice of provider is limited, particularly in rural areas.
-            </p>
-      </div>
-    </div>
-  </div>
-</div>
+@include('partials.classification.level55Modal')
 
 <div class="modal fade" id="level66Modal" tabindex="-1" aria-labelledby="level66ModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable level66-modal-dialog">
@@ -1497,77 +1292,9 @@
   </div>
 </div>
 
-<div class="modal fade" id="police1Modal" tabindex="-1" aria-labelledby="police1ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex align-items-center gap-2">
-          <img src="{{ asset('images/Layer4.png') }}" alt="District Police Command" style="width:24px; height:24px; object-fit:contain;">
-          <h5 class="modal-title" id="police1ModalLabel">District Police Command / Police Station</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+@include('partials.classification.police1Modal')
 
-      <div class="modal-body">
-        <p><strong>Command Level:</strong> Third-tier Territorial Police Command</p>
-        <p><strong>Typical Head Rank:</strong> Superintendent of Police (SP) or Inspector of Police (IP)</p>
-        <p><strong>Administrative Equivalent:</strong> District level</p>
-
-        <p>Supervises police operations within a district by directing police stations and subordinate units, coordinating patrol activities, maintaining public order, supporting criminal investigations, and ensuring effective delivery of policing services within their jurisdiction.</p>
-
-        <p class="mb-2"><strong>Responsibilities:</strong></p>
-        <ul>
-          <li>Command district-level police operations.</li>
-          <li>Supervise Police Station Commanders within the district.</li>
-          <li>Coordinate patrol, crime prevention, and law enforcement activities.</li>
-          <li>Direct responses to local emergencies and major incidents.</li>
-          <li>Allocate operational personnel and resources among police stations.</li>
-          <li>Monitor crime trends and operational performance within the district.</li>
-          <li>Coordinate policing with district administrations and community leaders.</li>
-          <li>Ensure implementation of provincial operational directives.</li>
-          <li>Prepare operational reports for the Provincial Police Commander (PPCs).</li>
-          <li>Support community policing and conflict-resolution initiatives.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="police2Modal" tabindex="-1" aria-labelledby="police2ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="d-flex align-items-center gap-2">
-          <img src="{{ asset('images/Layer3.png') }}" alt="Provincial Police Command" style="width:24px; height:24px; object-fit:contain;">
-          <h5 class="modal-title" id="police2ModalLabel">Provincial Police Command (PPC)</h5>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div class="modal-body">
-        <p><strong>Command Level:</strong> Second-tier Territorial Police Command</p>
-        <p><strong>Typical Head Rank:</strong> Chief Superintendent of Police (CSP) or Superintendent of Police (SP)</p>
-        <p><strong>Administrative Equivalent:</strong> Provincial (or Metropolitan Command in the National Capital District and Lae) level</p>
-
-        <p>Commands all policing activities within a province or metropolitan area by directing district police commands, managing crime prevention and law enforcement operations, coordinating emergency responses, and implementing national policing policies at the provincial level.</p>
-
-        <p class="mb-2"><strong>Responsibilities:</strong></p>
-        <ul>
-          <li>Command all policing operations within a province.</li>
-          <li>Supervise District Police Commanders and Station Commanders.</li>
-          <li>Coordinate crime prevention, patrol, and public order operations.</li>
-          <li>Direct provincial criminal investigations and emergency responses.</li>
-          <li>Manage police personnel, logistics, and operational resources within the province.</li>
-          <li>Coordinate policing activities with provincial administrations and local authorities.</li>
-          <li>Monitor crime patterns and public safety issues.</li>
-          <li>Ensure compliance with national policing standards and operational procedures.</li>
-          <li>Prepare operational reports for the Divisional Police Commander.</li>
-          <li>Promote community policing and public engagement initiatives.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+@include('partials.classification.police2Modal')
 
 <div class="modal fade" id="police3Modal" tabindex="-1" aria-labelledby="police3ModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
@@ -1739,6 +1466,29 @@ document.addEventListener('DOMContentLoaded', function () {
 @endsection
 
 @push('service')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.querySelector('.dashboard-content-toggle');
+        const panel = document.getElementById('dashboardContentInfo');
+        if (!toggle || !panel) return;
+        function setContentInfoOpen(open) {
+            panel.hidden = !open;
+            toggle.closest('.dashboard-map-layout').classList.toggle('is-content-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
+            toggle.setAttribute('aria-label', open ? 'Close Content Info' : 'Open Content Info');
+            toggle.querySelector('[aria-hidden]').textContent = open ? '\u2039' : '\u203a';
+        }
+        toggle.addEventListener('click', function () {
+            setContentInfoOpen(toggle.getAttribute('aria-expanded') !== 'true');
+        });
+        panel.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                setContentInfoOpen(false);
+                toggle.focus();
+            }
+        });
+    });
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd-WVlGgZFJwAtPZkbAEca2Np6OI7CBTM&libraries=places,geometry,drawing"></script>
 
