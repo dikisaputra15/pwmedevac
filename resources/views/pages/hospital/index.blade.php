@@ -1805,7 +1805,7 @@ combinedPanelDiv.innerHTML = `
                 @endforeach
             </select>
             <label>Facility Level:</label>
-             ${['Belau National Hospital','Community Health Centers'].map(c => `
+             ${['Hospital','Clinic / Health Centre'].map(c => `
             <label style="display:block;font-size:13px;margin-bottom:5px;">
                 <input type="checkbox" name="hospitalLevel" value="${c}">
                 ${c} (<span id="count-${c.replace(/\s+/g,'-')}">0</span>)
