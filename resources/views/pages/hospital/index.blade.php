@@ -1808,7 +1808,7 @@ combinedPanelDiv.innerHTML = `
              ${['Hospital','Clinic / Health Centre'].map(c => `
             <label style="display:block;font-size:13px;margin-bottom:5px;">
                 <input type="checkbox" name="hospitalLevel" value="${c}">
-                ${c} (<span id="count-${c.replace(/\s+/g,'-')}">0</span>)
+                ${c} (<span id="count-${c.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
             </label>
             `).join('')}
             <hr>
