@@ -9,6 +9,7 @@ use App\Models\Police;
 use App\Models\Embassiees;
 use App\Models\Provincesregion;
 use Illuminate\Support\Facades\DB;
+use Exception;
 
 class HospitalController extends Controller
 {
@@ -17,12 +18,16 @@ class HospitalController extends Controller
      */
     public function index(Request $request)
     {
-        $hospitalNames = DB::table('hospitals')->distinct()->pluck('name')->filter()->sort()->values();
+        $hospitalOptions = Hospital::where('hospital_status', true)
+            ->whereNotNull('name')
+            ->where('name', '<>', '')
+            ->orderBy('name')
+            ->get(['id', 'name']);
         $hospitalCategories = DB::table('hospitals')->distinct()->pluck('facility_level')->filter()->sort()->values();
         $hospitalLocations = DB::table('hospitals')->distinct()->pluck('address')->filter()->sort()->values();
 
         $provinces = Provincesregion::all();
-        return view('pages.hospital.index', compact('provinces','hospitalNames','hospitalCategories','hospitalLocations'));
+        return view('pages.hospital.index', compact('provinces','hospitalOptions','hospitalCategories','hospitalLocations'));
     }
 
     /**
@@ -185,6 +190,10 @@ class HospitalController extends Controller
 
         $query->where('hospital_status', true);
 
+        $query->when($request->filled('hospital_id'), function ($q) use ($request) {
+            $q->where('hospitals.id', $request->integer('hospital_id'));
+        });
+
         // Filter by name
         $query->when($request->filled('name'), function ($q) use ($request) {
             $q->where('name', 'like', '%' . $request->input('name') . '%');
@@ -285,24 +294,26 @@ class HospitalController extends Controller
             }
         }
 
-         // Execute the query and return JSON response
         $hospitals = $query->get();
-         $levelCounts = [
+        $levelCounts = [
             'Hospital' => 0,
             'Clinic / Health Centre' => 0,
         ];
 
         foreach ($hospitals as $hospital) {
-
-            if (empty($hospital->facility_level)) {
-                continue;
+            $levels = array_map('trim', explode(',', strtolower((string) $hospital->facility_level)));
+            if (in_array('belau national hospital', $levels, true)) {
+                $levels[] = 'hospital';
             }
 
-            $level = trim($hospital->facility_level);
-
-            if (isset($levelCounts[$level])) {
-                $levelCounts[$level]++;
+            $mapLevels = [];
+            foreach (array_keys($levelCounts) as $level) {
+                if (in_array(strtolower($level), $levels, true)) {
+                    $levelCounts[$level]++;
+                    $mapLevels[] = $level;
+                }
             }
+            $hospital->setAttribute('map_levels', $mapLevels);
         }
 
         return response()->json([

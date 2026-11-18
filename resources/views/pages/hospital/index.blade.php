@@ -1701,15 +1701,18 @@ function addHospitalMarkers(data) {
 }
 
 // === Apply Filter ===
+let hospitalFilterRequest = 0;
+
 async function applyHospitalFilters() {
+    const request = ++hospitalFilterRequest;
     const provs = [...document.querySelectorAll('.province-checkbox:checked')].map(e => e.value);
-    const levels = [...document.querySelectorAll('input[name="hospitalLevel"]:checked')].map(e => e.value);
-    const hospitalSelect = $('#hospital_name_map').val() || '';
-    const hospitalName = Array.isArray(hospitalSelect) ? hospitalSelect[0] : hospitalSelect;
+    const levelInputs = [...combinedPanelDiv.querySelectorAll('input[name="hospitalLevel"]')];
+    const levels = levelInputs.filter(input => input.checked).map(input => input.value);
+    const hospitalId = hospitalNameSelect.value;
     const radius = parseInt(document.getElementById('radiusRangeMap')?.value || 0);
 
     let filters = {};
-    if (hospitalName) filters.name = hospitalName;
+    if (hospitalId) filters.hospital_id = hospitalId;
     if (provs.length > 0) filters.provinces = provs;
     if (radius > 0 && lastClickedLocation) {
         filters.radius = radius;
@@ -1717,32 +1720,19 @@ async function applyHospitalFilters() {
         filters.center_lng = lastClickedLocation.lng;
     }
 
-    const result = await fetchHospitalData(filters);
-
-    const hospitals = Array.isArray(result?.hospitals) ? result.hospitals : [];
-    const levelCounts = result?.levelCounts && typeof result.levelCounts === 'object'
-        ? result.levelCounts
-        : {};
+    const { hospitals, levelCounts } = await fetchHospitalData(filters);
+    if (request !== hospitalFilterRequest) return;
 
     const filteredHospitals = hospitals.filter(h => {
         if (levels.length === 0) return true;
-        if (!h.facility_level) return false;
-        const dbLevels = h.facility_level.split(',').map(c => c.trim().toLowerCase());
-        return levels.some(sel => dbLevels.includes(sel.toLowerCase()));
+        return levels.some(level => h.map_levels.includes(level));
     });
 
+    combinedPanelDiv.querySelector('#totalCountDisplay').textContent = filteredHospitals.length;
+    levelInputs.forEach(input => {
+        input.parentElement.querySelector('span').textContent = levelCounts[input.value] ?? 0;
+    });
     addHospitalMarkers(filteredHospitals);
-    document.getElementById('totalCountDisplay').innerHTML = `<strong>Hospitals:</strong> ${filteredHospitals.length}`;
-
-    Object.keys(levelCounts).forEach(level => {
-
-        const id = level.replace(/[^a-zA-Z0-9]/g,'-');
-        const el = document.getElementById(`count-${id}`);
-
-        if (el) {
-            el.textContent = levelCounts[level];
-        }
-    });
 }
 
 // === Filter Panel (Custom Google Maps Control) ===
@@ -1800,9 +1790,6 @@ combinedPanelDiv.innerHTML = `
             <label>Hospital Name:</label>
             <select id="hospital_name_map" class="form-select form-select-sm mb-2 select-search-hospital">
                 <option value="">Select Hospital</option>
-                @foreach($hospitalNames as $n)
-                    <option value="{{ $n }}">{{ $n }}</option>
-                @endforeach
             </select>
             <label>Facility Level:</label>
              ${['Hospital','Clinic / Health Centre'].map(c => `
@@ -1811,6 +1798,7 @@ combinedPanelDiv.innerHTML = `
                 ${c} (<span id="count-${c.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
             </label>
             `).join('')}
+            <div style="margin-top:8px;font-size:13px;"><strong>Total facilities:</strong> <span id="totalCountDisplay">0</span></div>
             <hr>
             <div class="filter-box" id="provinceSelect">
                 <label class="filter-label">Province</label>
@@ -1851,9 +1839,12 @@ combinedPanelDiv.innerHTML = `
             </div>
             <hr>
             <button id="resetMapFilter" class="btn btn-sm btn-secondary w-100">Reset All</button>
-            <div id="totalCountDisplay" style="margin-top:8px;text-align:center;font-size:13px;"></div>
         </div>
     </div>`;
+
+const hospitalNameSelect = combinedPanelDiv.querySelector('#hospital_name_map');
+const hospitalOptions = {{ Illuminate\Support\Js::from($hospitalOptions) }};
+hospitalOptions.forEach(({ id, name }) => hospitalNameSelect.add(new Option(name, id)));
 
 google.maps.event.addDomListener(combinedPanelDiv, 'click', e => e.stopPropagation());
 google.maps.event.addDomListener(combinedPanelDiv, 'dblclick', e => e.stopPropagation());
@@ -1878,8 +1869,7 @@ function initHospitalSelect2() {
 }
 initHospitalSelect2();
 
-// Event select2 (delegated, jadi tidak tergantung timing DOM)
-$(document).on('change', '#hospital_name_map', function() {
+$(hospitalNameSelect).on('change', function() {
     applyHospitalFilters();
 });
 
@@ -2049,9 +2039,9 @@ document.addEventListener('click', async e => {
     if (e.target.id === 'resetMapFilter') {
         document.querySelectorAll('#filterPanel input[type="checkbox"]').forEach(cb => cb.checked = false);
         if (typeof $ !== 'undefined' && $.fn && $.fn.select2) {
-            $('.select-search-hospital').val(null).trigger('change');
+            $(hospitalNameSelect).val('').trigger('change.select2');
         } else {
-            document.getElementById('hospital_name_map').value = '';
+            hospitalNameSelect.value = '';
         }
 
         const provinceSearch = document.getElementById('provinceSearch');
