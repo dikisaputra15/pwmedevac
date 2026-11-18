@@ -1798,7 +1798,6 @@ combinedPanelDiv.innerHTML = `
                 ${c} (<span id="count-${c.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
             </label>
             `).join('')}
-            <div style="margin-top:8px;font-size:13px;"><strong>Total facilities:</strong> <span id="totalCountDisplay">0</span></div>
             <hr>
             <div class="filter-box" id="provinceSelect">
                 <label class="filter-label">Province</label>
@@ -1839,6 +1838,7 @@ combinedPanelDiv.innerHTML = `
             </div>
             <hr>
             <button id="resetMapFilter" class="btn btn-sm btn-secondary w-100">Reset All</button>
+            <div style="margin-top:8px;text-align:center;font-size:13px;"><strong>Hospitals:</strong> <span id="totalCountDisplay">0</span></div>
         </div>
     </div>`;
 
