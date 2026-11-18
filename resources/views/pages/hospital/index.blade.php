@@ -1617,12 +1617,19 @@ function addHospitalMarkers(data) {
 
         const marker = new google.maps.Marker({
             position,
-            map,
-            icon: {
-                url: h.icon || 'https://unpkg.com/leaflet/dist/images/marker-icon.png',
-                scaledSize: new google.maps.Size(24, 24)
-            }
+            map
         });
+
+        if (h.icon) {
+            const iconImage = new Image();
+            iconImage.onload = () => {
+                marker.setIcon({
+                    url: iconImage.src,
+                    scaledSize: new google.maps.Size(24, 24)
+                });
+            };
+            iconImage.src = h.icon;
+        }
 
         const itemName  = h.name || 'N/A';
         const detailUrl = `/hospitals/${h.id}`;
