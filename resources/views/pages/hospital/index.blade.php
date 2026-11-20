@@ -1637,7 +1637,7 @@ function addHospitalMarkers(data) {
         const popupContent = `
             <h5 style="border-bottom:1px solid #ccc;">${itemName}</h5>
             <strong>Global Classification:</strong> ${h.facility_category || 'N/A'}<br>
-            <strong>Country Classification:</strong> ${h.facility_level || 'N/A'}<br>
+            <strong>Facility Level:</strong> ${h.map_levels?.join(', ') || h.facility_level || 'N/A'}<br>
             <strong>Address:</strong>
                 ${h.address || 'N/A'}
                 ${h.provinces_region ? ', ' + h.provinces_region : ''}, Palau<br>
@@ -1737,7 +1737,7 @@ async function applyHospitalFilters() {
 
     combinedPanelDiv.querySelector('#totalCountDisplay').textContent = filteredHospitals.length;
     levelInputs.forEach(input => {
-        input.parentElement.querySelector('span').textContent = levelCounts[input.value] ?? 0;
+        input.parentElement.querySelector('[data-hospital-level-count]').textContent = levelCounts[input.value] ?? 0;
     });
     addHospitalMarkers(filteredHospitals);
 }
@@ -1798,13 +1798,7 @@ combinedPanelDiv.innerHTML = `
             <select id="hospital_name_map" class="form-select form-select-sm mb-2 select-search-hospital">
                 <option value="">Select Hospital</option>
             </select>
-            <label>Facility Level:</label>
-             ${['Hospital','Clinic / Health Centre'].map(c => `
-            <label style="display:block;font-size:13px;margin-bottom:5px;">
-                <input type="checkbox" name="hospitalLevel" value="${c}">
-                ${c} (<span id="count-${c.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
-            </label>
-            `).join('')}
+            @include('partials.hospital-level-filter')
             <hr>
             <div class="filter-box" id="provinceSelect">
                 <label class="filter-label">Province</label>

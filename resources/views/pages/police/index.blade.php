@@ -1224,7 +1224,9 @@ function addPoliceMarkers(data) {
 }
 
 // === Apply Filter POLICE ===
+let policeFilterRequest = 0;
 async function applyPoliceFilters() {
+    const request = ++policeFilterRequest;
     const provs = [...document.querySelectorAll('.province-checkbox:checked')].map(e => e.value);
     const categories = [...document.querySelectorAll('input[name="policeCategory"]:checked')].map(e => e.value);
     const policeName = $('#police_name_map').val() || '';
@@ -1234,7 +1236,6 @@ async function applyPoliceFilters() {
 
     if (policeName) filters.name = policeName;
     if (provs.length > 0) filters.provinces = provs;
-    if (categories.length > 0) filters.categories = categories;
 
     if (radius > 0 && lastClickedLocation) {
         filters.radius = radius;
@@ -1243,24 +1244,19 @@ async function applyPoliceFilters() {
     }
 
     const result = await fetchPoliceData(filters);
+    if (request !== policeFilterRequest) return;
 
-    const polices = result.polices;
-    const categoryCounts = result.categoryCounts;
-
+    const polices = (result?.polices ?? []).filter(police =>
+        !categories.length || categories.some(category => police.map_categories.includes(category))
+    );
     addPoliceMarkers(polices);
 
     document.getElementById('totalCountDisplay').innerHTML =
         `<strong>Police:</strong> ${polices.length}`;
 
-    Object.keys(categoryCounts).forEach(cat => {
-
-        const id = cat.replace(/[^a-zA-Z0-9]/g,'-');
-
-        const el = document.getElementById(`count-${id}`);
-
-        if (el) {
-            el.textContent = categoryCounts[cat];
-        }
+    document.querySelectorAll('input[name="policeCategory"]').forEach(input => {
+        input.parentElement.querySelector('[data-police-category-count]').textContent =
+            result?.categoryCounts?.[input.value] ?? 0;
     });
 }
 
@@ -1323,16 +1319,7 @@ combinedPanelDiv.innerHTML = `
                     <option value="{{ $n }}">{{ $n }}</option>
                 @endforeach
             </select>
-            <label>Category:</label>
-            ${[
-                'National Police HQ',
-                'Police Sub-Station',
-            ].map(c => `
-            <label style="display:block;font-size:13px;margin-bottom:5px;">
-                <input type="checkbox" name="policeCategory" value="${c}">
-                ${c} (<span id="count-${c.replace(/[^a-zA-Z0-9]/g,'-')}">0</span>)
-            </label>
-            `).join('')}
+            @include('partials.police-category-filter')
             <hr>
             <div class="filter-box" id="provinceSelect">
                 <label class="filter-label">Province</label>

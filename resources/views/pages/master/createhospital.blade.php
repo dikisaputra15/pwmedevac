@@ -56,12 +56,11 @@
             <div class="form-group">
                 <label>Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="Hospital">
-                        Hospital
-                    </option>
-                    <option value="Clinic / Health Centre">
-                        Clinic / Health Centre
-                    </option>
+                    @foreach (\App\Models\Hospital::FACILITY_LEVELS as $level)
+                        <option value="{{ $level }}" @selected(old('facility_level', 'Hospital') === $level)>
+                            {{ $level }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
         </div>

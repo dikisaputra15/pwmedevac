@@ -135,6 +135,7 @@ class HospitalController extends Controller
             ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance
         ", [$latitude, $longitude, $latitude])
         ->having('distance', '<=', $radius_km)
+        ->where('hospital_status', true)
         ->where('id', '!=', $hospital->id) // Exclude the current hospital
         ->orderBy('distance')
         ->get();
@@ -159,6 +160,7 @@ class HospitalController extends Controller
                 * sin( radians( latitude ) )
             )) AS distance
         ", [$latitude, $longitude, $latitude])
+        ->where('police_status', true)
         ->having('distance', '<=', $radius_km)
         ->orderBy('distance')
         ->get();
@@ -295,25 +297,13 @@ class HospitalController extends Controller
         }
 
         $hospitals = $query->get();
-        $levelCounts = [
-            'Hospital' => 0,
-            'Clinic / Health Centre' => 0,
-        ];
+        $levelCounts = array_fill_keys(Hospital::FACILITY_LEVELS, 0);
 
         foreach ($hospitals as $hospital) {
-            $levels = array_map('trim', explode(',', strtolower((string) $hospital->facility_level)));
-            if (in_array('belau national hospital', $levels, true)) {
-                $levels[] = 'hospital';
+            $hospital->append('map_levels');
+            foreach ($hospital->map_levels as $level) {
+                $levelCounts[$level]++;
             }
-
-            $mapLevels = [];
-            foreach (array_keys($levelCounts) as $level) {
-                if (in_array(strtolower($level), $levels, true)) {
-                    $levelCounts[$level]++;
-                    $mapLevels[] = $level;
-                }
-            }
-            $hospital->setAttribute('map_levels', $mapLevels);
         }
 
         return response()->json([

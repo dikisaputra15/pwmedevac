@@ -650,12 +650,6 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header fw-bold"><img src="{{ asset('images/icon-police.png') }}" style="width: 24px; height: 24px;"> Nearest Police Station</div>
-                <div class="card-body overflow-auto">
-                    <?php echo $airport->nearest_police_station; ?>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -1410,8 +1404,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ]) !!};
 
     const nearbyAirports = @json($nearbyAirports);
-    const nearbyHospitals = @json($nearbyHospitals);
-    const nearbyPolices = @json($nearbyPolices);
+    const nearbyHospitals = {{ Illuminate\Support\Js::from($nearbyHospitals->each->append('map_levels')) }};
+    const nearbyPolices = {{ Illuminate\Support\Js::from($nearbyPolices->each->append('map_categories')) }};
     const nearbyEmbassy = @json($nearbyEmbassy);
     let radiusKm = 100; // default radius
 
@@ -1544,12 +1538,8 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             if (distance > radiusKm) return;
 
-            // Filter hospital by facility level
-            if (type === 'Hospital' && filters.hospitalLevels?.length > 0) {
-                const itemLevel = (item.facility_level || '').toLowerCase();
-                const allowed = filters.hospitalLevels.map(l => l.toLowerCase());
-                if (!allowed.includes(itemLevel)) return;
-            }
+            if (type === 'Hospital' && filters.hospitalLevels?.length &&
+                !filters.hospitalLevels.some(level => item.map_levels.includes(level))) return;
 
             // Filter airport by category
             if (type === 'Airport' && filters.airportClassifications?.length > 0) {
@@ -1559,11 +1549,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Filter police
-            if (type === 'Police' && filters.policeCategories?.length > 0) {
-                const categories = (item.category || '').split(',').map(c => c.trim().toLowerCase());
-                const allowed = filters.policeCategories.map(c => c.toLowerCase());
-                if (!categories.some(cat => allowed.includes(cat))) return;
-            }
+            if (type === 'Police' && filters.policeCategories?.length &&
+                !filters.policeCategories.some(category => item.map_categories.includes(category))) return;
 
             const isPolice = type === 'Police';
             const iconSize = isPolice ? new google.maps.Size(12, 12) : new google.maps.Size(24, 24);
@@ -1578,7 +1565,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const name = item.name || item.airport_name || item.name_police || item.name_embassiees || 'N/A';
-            const level = item.facility_level || item.category || '';
+            const level = item.map_levels?.join(', ') || item.facility_level || item.category || '';
 
             let detailUrl = '#';
 
@@ -1819,6 +1806,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (radiusCircle) radiusCircle.setMap(null);
         addMainAirportAndCircle();
 
+        const hospitalsInRadius = nearbyHospitals.filter(hospital => hospital.distance <= radiusKm);
+        document.querySelectorAll('#hospitalFilter input[name="hospitalLevel"]').forEach(input => {
+            const count = hospitalsInRadius.filter(hospital => hospital.map_levels.includes(input.value)).length;
+            input.parentElement.querySelector('[data-hospital-level-count]').textContent = count;
+        });
+
+        const policeInRadius = nearbyPolices.filter(police => police.distance <= radiusKm);
+        document.querySelectorAll('#policeFilter input[name="policeCategory"]').forEach(input => {
+            const count = policeInRadius.filter(police => police.map_categories.includes(input.value)).length;
+            input.parentElement.querySelector('[data-police-category-count]').textContent = count;
+        });
+
         const filters = { hospitalLevels, airportClassifications, policeCategories };
         if (filterType === 'hospital') {
             addNearbyMarkers(nearbyHospitals, DEFAULT_HOSPITAL_ICON_URL, 'Hospital', filters);
@@ -1873,18 +1872,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </select>
 
             <div id="hospitalFilter" style="display:none;">
-                <strong>Facility Level:</strong><br>
-                ${[
-                    { alias: 'Level 6', value: '6 - National Referral Specialist - Tertiary Teaching Hospital - Health Services (NHA)' },
-                    { alias: 'Level 5', value: '5 - Provincial Hospital, Health Services and Public Health Programs (PHA)' },
-                    { alias: 'Level 4', value: '4 - District Hospital - Rural Health Services (DH)' },
-                    { alias: 'Level 3', value: '3 - Health Center / Urban Clinic (HC-UC)' },
-                    { alias: 'Level 2', value: '2 - Community Health Post (CHP)' },
-                    { alias: 'Level 1', value: '1 - Village Health Post (VHP)' }
-                ].map(lvl => `
-                    <label style="display:block;font-size:13px;">
-                        <input type="checkbox" name="hospitalLevel" value="${lvl.value}"> ${lvl.alias}
-                    </label>`).join('')}
+                @include('partials.hospital-level-filter')
             </div>
 
             <div id="airportFilter" style="display:none;margin-top:8px;">
@@ -1896,17 +1884,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div id="policeFilter" style="display:none;margin-top:8px;">
-                <strong>Police Category:</strong><br>
-                ${[
-                    'National Police HQ',
-                    'Divisional Command',
-                    'Provincial Police Command (PPC)',
-                    'District Police Command / Police Station'
-                ].map(cat => `
-                    <label style="display:block;font-size:13px;">
-                        <input type="checkbox" name="policeCategory" value="${cat}"> ${cat}
-                    </label>
-                `).join('')}
+                @include('partials.police-category-filter')
             </div>
 
             <button id="resetFilter" class="btn btn-sm btn-secondary mt-3 w-100">Reset All</button>

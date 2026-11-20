@@ -66,12 +66,11 @@
             <div class="form-group">
                 <label>Edit Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="Hospital" {{ old('facility_level', $hospital->facility_level ?? '') == 'Hospital' ? 'selected' : '' }}>
-                        Hospital
-                    </option>
-                    <option value="Clinic / Health Centre" {{ old('facility_level', $hospital->facility_level ?? '') == 'Clinic / Health Centre' ? 'selected' : '' }}>
-                        Clinic / Health Centre
-                    </option>
+                    @foreach (\App\Models\Hospital::FACILITY_LEVELS as $level)
+                        <option value="{{ $level }}" @selected(old('facility_level', $hospital->map_levels[0] ?? $hospital->facility_level) === $level)>
+                            {{ $level }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
         </div>

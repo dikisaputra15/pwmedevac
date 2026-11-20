@@ -238,11 +238,13 @@ class AirportsController extends Controller
 
         // --- Ambil Rumah Sakit Terdekat ---
         $nearbyHospitals = Hospital::selectRaw('*, ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance', [$airport->latitude, $airport->longitude, $airport->latitude])
+            ->where('hospital_status', true)
             ->having('distance', '<=', 500) // Filter dalam radius 100 km (sesuaikan)
             ->orderBy('distance')
             ->get();
 
         $nearbyPolices = Police::selectRaw("*, ( 6371 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ))) AS distance", [$airport->latitude, $airport->longitude, $airport->latitude])
+            ->where('police_status', true)
             ->having('distance', '<=', 500)
             ->orderBy('distance')
             ->get();

@@ -241,7 +241,7 @@
      <div class="d-flex justify-content-between p-3" style="background-color: #dfeaf1;">
         <div class="d-flex flex-column gap-1">
             <h2 class="fw-bold">{{ $hospital->name }}</h2>
-            <span class="fw-bold"><b>Global Classification:</b> {{ $hospital->facility_category }} | <b>Country Classification:</b> Level {{ $hospital->facility_level }}</span>
+            <span class="fw-bold"><b>Global Classification:</b> {{ $hospital->facility_category }} | <b>Facility Level:</b> {{ implode(', ', $hospital->map_levels) ?: ($hospital->facility_level ?: 'N/A') }}</span>
         </div>
 
         <div class="d-flex gap-2 ms-auto">
