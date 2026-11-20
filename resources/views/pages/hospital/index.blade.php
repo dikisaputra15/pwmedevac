@@ -421,10 +421,7 @@
         <div class="d-flex justify-content-between align-items-center gap-3">
 
         <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
-                <i class="bi bi-info-circle text-primary fs-5"></i>
-                Disclaimer
-            </button>
+
         </div>
 
         <div class="d-flex align-items-end gap-3">
@@ -1091,8 +1088,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 // === Inisialisasi Peta ===
 const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -4.245820574165665, lng: 122.16203857061076 },
-    zoom: 5,
+    center: @json(config('maps.center')),
+    zoom: @json(config('maps.zoom')),
     mapTypeId: 'roadmap',
     mapTypeControl: true,
     fullscreenControl: true,
@@ -1615,19 +1612,19 @@ function addHospitalMarkers(data) {
 
         const position = { lat: parseFloat(h.latitude), lng: parseFloat(h.longitude) };
 
+        const scaledSize = new google.maps.Size(24, 24);
         const marker = new google.maps.Marker({
             position,
-            map
+            map,
+            icon: {
+                url: @json(asset('images/hospital-icon.png')),
+                scaledSize
+            }
         });
 
         if (h.icon) {
             const iconImage = new Image();
-            iconImage.onload = () => {
-                marker.setIcon({
-                    url: iconImage.src,
-                    scaledSize: new google.maps.Size(24, 24)
-                });
-            };
+            iconImage.onload = () => marker.setIcon({ url: iconImage.src, scaledSize });
             iconImage.src = h.icon;
         }
 
@@ -2144,16 +2141,7 @@ setTimeout(() => {
     initLocationSearch();
 }, 350);
 
-// Retry sampai badge level (di dalam combinedPanelDiv) benar-benar ada di DOM,
-// supaya jumlah per level tidak "nyangkut" di 0 saat load pertama.
-function initialApplyFilters() {
-    if (!document.querySelector('#filterPanel [id^="count-"]')) {
-        setTimeout(initialApplyFilters, 200);
-        return;
-    }
-    applyHospitalFilters();
-}
-initialApplyFilters();
+applyHospitalFilters();
 </script>
 
 @endpush

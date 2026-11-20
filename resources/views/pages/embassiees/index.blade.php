@@ -309,8 +309,8 @@
 <script>
 // === Inisialisasi Peta ===
 const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -6.80188562253168, lng: 144.0733101155011 },
-    zoom: 6,
+    center: @json(config('maps.center')),
+    zoom: @json(config('maps.zoom')),
     mapTypeId: 'roadmap',
     mapTypeControl: true,
     fullscreenControl: true,

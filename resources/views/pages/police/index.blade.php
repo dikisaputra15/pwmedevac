@@ -390,10 +390,7 @@
         <div class="d-flex justify-content-between align-items-center gap-3 my-2">
 
             <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
-                    <i class="bi bi-info-circle text-primary fs-5"></i>
-                    Disclaimer
-                </button>
+
             </div>
 
             <div class="d-flex align-items-center gap-3">
@@ -624,8 +621,8 @@
 <script>
 // === Inisialisasi Peta ===
 const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -6.80188562253168, lng: 144.0733101155011 },
-    zoom: 5,
+    center: @json(config('maps.center')),
+    zoom: @json(config('maps.zoom')),
     mapTypeId: 'roadmap',
     mapTypeControl: true,
     fullscreenControl: true,
@@ -1134,19 +1131,27 @@ function addPoliceMarkers(data) {
 
     const bounds = new google.maps.LatLngBounds();
 
+    const scaledSize = new google.maps.Size(15, 15);
+    const defaultIcon = @json(asset('images/Layer1.png'));
+    const subStationIcon = @json(asset('images/Layer2.png'));
+
     data.forEach(police => {
         if (!police.latitude || !police.longitude) return;
 
         const position = { lat: parseFloat(police.latitude), lng: parseFloat(police.longitude) };
+        const iconUrl = police.map_categories?.includes('Police Sub-Station') ? subStationIcon : defaultIcon;
 
         const marker = new google.maps.Marker({
             position,
             map,
-            icon: {
-                url: police.icon || 'https://png.pngtree.com/png-vector/20221211/ourmid/pngtree-minimal-location-map-icon-logo-symbol-vector-design-transparent-background-png-image_6520892.png',
-                scaledSize: new google.maps.Size(12, 12)
-            }
+            icon: { url: iconUrl, scaledSize }
         });
+
+        if (police.icon) {
+            const iconImage = new Image();
+            iconImage.onload = () => marker.setIcon({ url: iconImage.src, scaledSize });
+            iconImage.src = police.icon;
+        }
 
         const itemName  = police.name_police || 'N/A';
         const detailUrl = `/police/${police.id}/detail`;
@@ -1662,16 +1667,7 @@ setTimeout(() => {
     initLocationSearch();
 }, 350);
 
-// Retry sampai badge kategori (di dalam combinedPanelDiv) benar-benar ada di DOM,
-// supaya jumlah per kategori tidak "nyangkut" di 0 saat load pertama.
-function initialApplyFilters() {
-    if (!document.querySelector('#filterPanel [id^="count-"]')) {
-        setTimeout(initialApplyFilters, 200);
-        return;
-    }
-    applyPoliceFilters();
-}
-initialApplyFilters();
+applyPoliceFilters();
 </script>
 
 @endpush

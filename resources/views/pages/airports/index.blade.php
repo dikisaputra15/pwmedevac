@@ -259,10 +259,7 @@
         <div class="d-flex justify-content-between align-items-center gap-3 my-2">
 
             <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
-                    <i class="bi bi-info-circle text-primary fs-5"></i>
-                    Disclaimer
-                </button>
+
             </div>
 
             <div class="d-flex align-items-center gap-3">
@@ -482,8 +479,8 @@
 <script>
 // === Inisialisasi Peta ===
 const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: -6.80188562253168, lng: 144.0733101155011 },
-    zoom: 5,
+    center: @json(config('maps.center')),
+    zoom: @json(config('maps.zoom')),
     mapTypeId: 'roadmap',
     mapTypeControl: true,
     fullscreenControl: true,
